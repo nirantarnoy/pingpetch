@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel backend\models\ShopSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Shops');
+$this->title = Yii::t('app', 'ข้อมูลร้าน');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="shop-index">
