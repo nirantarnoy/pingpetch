@@ -57,9 +57,9 @@
       // else:
 
       images: [
-        "../img/bgslides/ping2.jpg",
-        "../img/bgslides/ping1.jpg",
-        "../img/bgslides/ping3.jpg"
+        "../img/bgslides/slide-1.jpg",
+        "../img/bgslides/slide-2.jpg",
+        "../img/bgslides/slide-3.jpg"
       ],
 
       onStart: function() {},
