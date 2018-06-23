@@ -51,7 +51,7 @@ $this->registerCss('
         <div class="container">
             <div class="col-md-12">
                 <div id="rotator">
-                    <h1 style="font-family: 'Cloud-Light';font-size: 45px"><span class="1strotate">กราฟิก ดีไซน์,สติ๊กเกอร์ ไดคัท, ตรายาง ป้ายโฒษณา</span></h1>
+                    <h1 style="font-family: 'Cloud-Light';font-size: 45px"><span class="1strotate">กราฟิก ดีไซน์,สติ๊กเกอร์ ไดคัท, ตรายาง ป้ายโฆษณา</span></h1>
                     <div class="line-spacer"></div>
                     <p><span class="2ndrotate">Graphic Design, Sticker diecut, Bill board</span></p>
                 </div>
