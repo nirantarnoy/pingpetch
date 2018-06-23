@@ -2,6 +2,8 @@
 
 /* @var $this yii\web\View */
 use frontend\themes\alstar\assets\AlstarAsset;
+use yii\helpers\Url;
+
 $this->title = 'พิงค์เพชรเซอร์วิส';
 AlstarAsset::register($this);
 $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@alstar/dist');
@@ -342,7 +344,7 @@ $this->registerCss('
                 <div id="sendmessage">Your message has been sent. Thank you!</div>
                 <div id="errormessage"></div>
 
-                <form action="" method="post" class="form-horizontal contactForm" role="form">
+                <form action="<?=Url::to(['index.php?r=site/sendmessage'],true)?>" method="post" class="form-horizontal contactForm" role="form">
                     <div class="col-md-offset-2 col-md-8">
                         <div class="form-group">
                             <input type="text" name="name" class="form-control" id="name" placeholder="ชื่อของคุณ" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
@@ -353,6 +355,12 @@ $this->registerCss('
                     <div class="col-md-offset-2 col-md-8">
                         <div class="form-group">
                             <input type="email" class="form-control" name="email" id="email" placeholder="อีเมล์" data-rule="email" data-msg="Please enter a valid email" />
+                            <div class="validation"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-offset-2 col-md-8">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="social" id="social" placeholder="โซเชี่ยล" data-rule="social" data-msg="Please enter a valid social" />
                             <div class="validation"></div>
                         </div>
                     </div>

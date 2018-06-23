@@ -215,4 +215,7 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+    public function actionSendmessage(){
+        echo "ok";return;
+    }
 }

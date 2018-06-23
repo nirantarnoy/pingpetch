@@ -14,7 +14,7 @@ class AlstarAsset extends AssetBundle
     ];
 
     public $js = [
-         'js/contact_me.js',
+         //'js/contact_me.js',
           'js/jquery.js',
           'js/bootstrap.min.js',
           'js/wow.min.js',
