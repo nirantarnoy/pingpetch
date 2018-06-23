@@ -23,7 +23,7 @@ class AlstarAsset extends AssetBundle
           'js/jquery.simple-text-rotator.min.js',
           'js/jquery.scrollTo.min.js',
           'js/jquery.nav.js',
-         // 'js/modernizr.custom.js',
+          'js/modernizr.custom.js',
           'js/grid.js',
           'js/stellar.js',
           'js/custom.js',
