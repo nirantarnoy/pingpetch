@@ -1,6 +1,26 @@
 html,
 body {
     height: 100%;
+    font-size: 33px;
+}
+
+@font-face{
+    font-family: 'Cloud-Light';
+    src: url('../fonts/Cloud-Light.ttf') format('truetype');
+    /* src: url('../fonts/thsarabunnew-webfont.eot?#iefix') format('embedded-opentype'),
+          url('../fonts/thsarabunnew-webfont.woff') format('woff'),
+          url('../fonts/EkkamaiStandard-Light.ttf') format('truetype');*/
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face{
+    font-family: 'Cloud-Bold';
+    src: url('../fonts/Cloud-Bold.ttf') format('truetype');
+    /* src: url('../fonts/thsarabunnew-webfont.eot?#iefix') format('embedded-opentype'),
+          url('../fonts/thsarabunnew-webfont.woff') format('woff'),
+          url('../fonts/EkkamaiStandard-Light.ttf') format('truetype');*/
+    font-weight: normal;
+    font-style: normal;
 }
 
 .wrap {

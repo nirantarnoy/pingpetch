@@ -1,8 +1,17 @@
 <?php
 
 /* @var $this yii\web\View */
+use frontend\themes\alstar\assets\AlstarAsset;
+$this->title = 'พิงค์เพชรเซอร์วิส';
+AlstarAsset::register($this);
+$directoryAsset = Yii::$app->assetManager->getPublishedUrl('@alstar/dist');
 
-$this->title = 'My Yii Application';
+$this->registerCss('
+     body{
+                font-family: "Cloud-Light";
+                font-size: 16px;
+            }
+');
 ?>
 <!-- Navigation -->
 <nav class="navbar navbar-default" role="navigation">
@@ -27,7 +36,7 @@ $this->title = 'My Yii Application';
                 <li><a href="#about">เกี่ยวกับเรา</a></li>
                 <li><a href="#services">บริการ</a></li>
                 <li><a href="#portfolio">ผลงาน</a></li>
-                <li><a href="#team">ทีม</a></li>
+<!--                <li><a href="#team">ทีม</a></li>-->
                 <li><a href="#contact">ติดต่อเรา</a></li>
             </ul>
         </div>
@@ -40,9 +49,9 @@ $this->title = 'My Yii Application';
         <div class="container">
             <div class="col-md-12">
                 <div id="rotator">
-                    <h1><span class="1strotate">Alstar web studio, Design for life, Creativity and technology</span></h1>
+                    <h1 style="font-family: 'Cloud-Light';font-size: 45px"><span class="1strotate">กราฟิก ดีไซน์,สติ๊กเกอร์ ไดคัท, ตรายาง ป้ายโฒษณา</span></h1>
                     <div class="line-spacer"></div>
-                    <p><span class="2ndrotate">Web Design, Brand Identity, Promotion</span></p>
+                    <p><span class="2ndrotate">Graphic Design, Sticker diecut, Bill board</span></p>
                 </div>
             </div>
         </div>
@@ -54,10 +63,10 @@ $this->title = 'My Yii Application';
     <div class="container">
         <div class="row">
             <div class="col-md-offset-2 col-md-8">
-                <div class="section-heading">
-                    <h2>เกี่ยวกับเรา</h2>
+                <div class="section-heading" style="font-family: 'Cloud-Light';font-size: 24px">
+                    <h2 style="font-family: 'Cloud-Light';">เกี่ยวกับเรา</h2>
                     <div class="heading-line"></div>
-                    <p>We’ve been building unique digital products, platforms, and experiences for the past 6 years.</p>
+                    <p></p>
                 </div>
             </div>
         </div>
@@ -66,11 +75,9 @@ $this->title = 'My Yii Application';
                 <img src="img/about-img.jpg" alt="">
             </div>
 
-            <div class="col-md-6 content">
-                <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elite storium paralate</h2>
-                <h3>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h3>
+            <div class="col-md-6 content" style="font-family: 'Cloud-Light';font-size: 24px;text-align: left;">
                 <p>
-                    Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum Libero justo laoreet sit amet cursus sit amet dictum sit. Commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+                    <dd><?=$modelinfo->aboutus?></dd>
                 </p>
             </div>
         </div>
@@ -83,8 +90,8 @@ $this->title = 'My Yii Application';
         <div class="row">
             <div class="col-md-12">
                 <div class="color-light">
-                    <h2 class="wow bounceInDown" data-wow-delay="0.5s">Details are the key for perfection</h2>
-                    <p class="lead wow bounceInUp" data-wow-delay="1s">We mix all detailed things together</p>
+                    <h2 class="wow bounceInDown" data-wow-delay="0.5s" style="font-family: 'Cloud-Light';font-size: 34px">รายละเอียดที่ประณีตคืองานของเรา</h2>
+                    <p class="lead wow bounceInUp" data-wow-delay="1s">กับการผสมประสานเข้ากับเทคโนโลยีและแนวความคิดสมัยใหม่</p>
                 </div>
             </div>
         </div>
@@ -96,10 +103,10 @@ $this->title = 'My Yii Application';
     <div class="container">
         <div class="row">
             <div class="col-md-offset-2 col-md-8">
-                <div class="section-heading">
-                    <h2>บริการของเรา</h2>
+                <div class="section-heading" style="font-family: 'Cloud-Light';font-size: 24px;">
+                    <h2 style="font-family: 'Cloud-Light';">บริการของเรา</h2>
                     <div class="heading-line"></div>
-                    <p>We’ve been building unique digital products, platforms, and experiences for the past 6 years.</p>
+                    <p><?=$modelinfo->service_title?></p>
                 </div>
             </div>
         </div>
@@ -173,10 +180,10 @@ $this->title = 'My Yii Application';
     <div class="container">
         <div class="row">
             <div class="col-md-offset-2 col-md-8">
-                <div class="section-heading">
-                    <h2>ผลงานของเรา</h2>
+                <div class="section-heading" style="font-family: 'Cloud-Light';font-size: 24px;">
+                    <h2 style="font-family: 'Cloud-Light';">ผลงานของเรา</h2>
                     <div class="heading-line"></div>
-                    <p>We’ve been building unique digital products, platforms, and experiences for the past 6 years.</p>
+                    <p><?=$modelinfo->work_title?></p>
                 </div>
             </div>
         </div>
@@ -239,9 +246,14 @@ $this->title = 'My Yii Application';
                             <img src="img/works/thumbs/11.jpg" alt="img01"/>
                         </a>
                     </li>
+<!--                    <li>-->
+<!--                        <a href="#" data-largesrc="img/works/12.jpg" data-title="Portfolio title" data-description="Mea an eros periculis dignissim, quo mollis nostrum elaboraret et. Id quem perfecto mel, no etiam perfecto qui. No nisl legere recusabo nam, ius an tale pericula evertitur, dicat phaedrum qui in. Usu numquam legendos in, voluptaria sadipscing ut vel. Eu eum mandamus volutpat gubergren, eos ad detracto nominati, ne eum idque elitr aliquam.">-->
+<!--                            <img src="img/works/thumbs/12.jpg" alt="img01"/>-->
+<!--                        </a>-->
+<!--                    </li>-->
                     <li>
-                        <a href="#" data-largesrc="img/works/12.jpg" data-title="Portfolio title" data-description="Mea an eros periculis dignissim, quo mollis nostrum elaboraret et. Id quem perfecto mel, no etiam perfecto qui. No nisl legere recusabo nam, ius an tale pericula evertitur, dicat phaedrum qui in. Usu numquam legendos in, voluptaria sadipscing ut vel. Eu eum mandamus volutpat gubergren, eos ad detracto nominati, ne eum idque elitr aliquam.">
-                            <img src="img/works/thumbs/12.jpg" alt="img01"/>
+                        <a href="#" data-largesrc="../themes/alstar/dist/img/works/ping1.jpg" data-title="Portfolio title" data-description="Mea an eros periculis dignissim, quo mollis nostrum elaboraret et. Id quem perfecto mel, no etiam perfecto qui. No nisl legere recusabo nam, ius an tale pericula evertitur, dicat phaedrum qui in. Usu numquam legendos in, voluptaria sadipscing ut vel. Eu eum mandamus volutpat gubergren, eos ad detracto nominati, ne eum idque elitr aliquam.">
+                            <img src="../themes/alstar/dist/img/works/thumbs/ping1.jpg" alt="img01"/>
                         </a>
                     </li>
                 </ul>
@@ -268,59 +280,59 @@ $this->title = 'My Yii Application';
 </section>
 
 <!-- Team -->
-<section id="team" class="home-section bg-white">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-offset-2 col-md-8">
-                <div class="section-heading">
-                    <h2>ทีมงานของเรา</h2>
-                    <div class="heading-line"></div>
-                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-                <div class="box-team wow bounceInUp" data-wow-delay="0.1s">
-                    <img src="img/team/1.jpg" alt="" class="img-circle img-responsive" />
-                    <h4>Dominique Vroslav</h4>
-                    <p>Art Director</p>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" data-wow-delay="0.3s">
-                <div class="box-team wow bounceInUp">
-                    <img src="img/team/2.jpg" alt="" class="img-circle img-responsive" />
-                    <h4>Thomas Jeffersonn</h4>
-                    <p>Web Designer</p>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" data-wow-delay="0.5s">
-                <div class="box-team wow bounceInUp">
-                    <img src="img/team/3.jpg" alt="" class="img-circle img-responsive" />
-                    <h4>Nola Maurin</h4>
-                    <p>Illustrator</p>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" data-wow-delay="0.7s">
-                <div class="box-team wow bounceInUp">
-                    <img src="img/team/4.jpg" alt="" class="img-circle img-responsive" />
-                    <h4>Mira Ladovic</h4>
-                    <p>Typographer</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<!--<section id="team" class="home-section bg-white">-->
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--            <div class="col-md-offset-2 col-md-8">-->
+<!--                <div class="section-heading" style="font-family: 'Cloud-Light';">-->
+<!--                    <h2 style="font-family: 'Cloud-Light';">ทีมงานของเรา</h2>-->
+<!--                    <div class="heading-line"></div>-->
+<!--                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="row">-->
+<!--            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">-->
+<!--                <div class="box-team wow bounceInUp" data-wow-delay="0.1s">-->
+<!--                    <img src="img/team/1.jpg" alt="" class="img-circle img-responsive" />-->
+<!--                    <h4>Dominique Vroslav</h4>-->
+<!--                    <p>Art Director</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" data-wow-delay="0.3s">-->
+<!--                <div class="box-team wow bounceInUp">-->
+<!--                    <img src="img/team/2.jpg" alt="" class="img-circle img-responsive" />-->
+<!--                    <h4>Thomas Jeffersonn</h4>-->
+<!--                    <p>Web Designer</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" data-wow-delay="0.5s">-->
+<!--                <div class="box-team wow bounceInUp">-->
+<!--                    <img src="img/team/3.jpg" alt="" class="img-circle img-responsive" />-->
+<!--                    <h4>Nola Maurin</h4>-->
+<!--                    <p>Illustrator</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" data-wow-delay="0.7s">-->
+<!--                <div class="box-team wow bounceInUp">-->
+<!--                    <img src="img/team/4.jpg" alt="" class="img-circle img-responsive" />-->
+<!--                    <h4>Mira Ladovic</h4>-->
+<!--                    <p>Typographer</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
 
 <!-- Contact -->
 <section id="contact" class="home-section bg-gray">
     <div class="container">
         <div class="row">
             <div class="col-md-offset-2 col-md-8">
-                <div class="section-heading">
-                    <h2>Contact us</h2>
+                <div class="section-heading" style="font-family: 'Cloud-Light';font-size: 24px;">
+                    <h2 style="font-family: 'Cloud-Light';">ติดต่อเรา</h2>
                     <div class="heading-line"></div>
-                    <p>If you have any question or just want to say 'hello' to Alstar web studio please fill out form below and we will be get in touch with you within 24 hours. </p>
+                    <p><?=$modelinfo->contact_title?></p>
                 </div>
             </div>
         </div>
@@ -333,34 +345,34 @@ $this->title = 'My Yii Application';
                 <form action="" method="post" class="form-horizontal contactForm" role="form">
                     <div class="col-md-offset-2 col-md-8">
                         <div class="form-group">
-                            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                            <input type="text" name="name" class="form-control" id="name" placeholder="ชื่อของคุณ" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                             <div class="validation"></div>
                         </div>
                     </div>
 
                     <div class="col-md-offset-2 col-md-8">
                         <div class="form-group">
-                            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                            <input type="email" class="form-control" name="email" id="email" placeholder="อีเมล์" data-rule="email" data-msg="Please enter a valid email" />
                             <div class="validation"></div>
                         </div>
                     </div>
 
                     <div class="col-md-offset-2 col-md-8">
                         <div class="form-group">
-                            <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                            <input type="text" class="form-control" name="subject" id="subject" placeholder="ชื่อเรื่อง" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
                             <div class="validation"></div>
                         </div>
                     </div>
 
                     <div class="col-md-offset-2 col-md-8">
                         <div class="form-group">
-                            <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                            <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="ข้อความ"></textarea>
                             <div class="validation"></div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-8">
-                            <button type="submit" class="btn btn-theme btn-lg btn-block">Send message</button>
+                            <button type="submit" class="btn btn-theme btn-lg btn-block">ส่งข้อความ</button>
                         </div>
                     </div>
                 </form>
@@ -376,62 +388,62 @@ $this->title = 'My Yii Application';
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <div class="contact-widget wow bounceInLeft">
+                <div class="contact-widget wow bounceInLeft" style="font-family: 'Cloud-Light';">
                     <i class="fa fa-map-marker fa-4x"></i>
-                    <h5>Main Office</h5>
+                    <h5 style="font-family: 'Cloud-Light';">ที่อยู่ร้าน</h5>
                     <p>
-                        109 Borough High Street,<br />London SE1 1NL
+                        <b><?=$modelinfo->name.$modelinfo->address?></b>
                     </p>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="contact-widget wow bounceInUp">
+                <div class="contact-widget wow bounceInUp" style="font-family: 'Cloud-Light';">
                     <i class="fa fa-phone fa-4x"></i>
-                    <h5>Call</h5>
+                    <h5 style="font-family: 'Cloud-Light';">โทร</h5>
                     <p>
-                        +1 111 9998 7774<br> +1 245 4544 6855
+                        <b><?=$modelinfo->tel?></b>
 
                     </p>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="contact-widget wow bounceInRight">
+                <div class="contact-widget wow bounceInRight" style="font-family: 'Cloud-Light';">
                     <i class="fa fa-envelope fa-4x"></i>
-                    <h5>Email us</h5>
+                    <h5 style="font-family: 'Cloud-Light';">อีเมล์</h5>
                     <p>
-                        panumas894@gmail.com
+                        <b><?=$modelinfo->email?></b>
                     </p>
                 </div>
             </div>
         </div>
         <div class="row mar-top30">
             <div class="col-md-12">
-                <h5>We're on social networks</h5>
+                <h5 style="font-family: 'Cloud-Light';font-size: 24px">ติดตามเราทางช่องทาง</h5>
                 <ul class="social-network">
-                    <li><a href="#">
+                    <li><a href="http://www.facebook.com/pingpetchserv">
 						<span class="fa-stack fa-2x">
 							<i class="fa fa-circle fa-stack-2x"></i>
 							<i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
 						</span></a>
                     </li>
-                    <li><a href="#">
-						<span class="fa-stack fa-2x">
-							<i class="fa fa-circle fa-stack-2x"></i>
-							<i class="fa fa-dribbble fa-stack-1x fa-inverse"></i>
-						</span></a>
-                    </li>
+<!--                    <li><a href="#">-->
+<!--						<span class="fa-stack fa-2x">-->
+<!--							<i class="fa fa-circle fa-stack-2x"></i>-->
+<!--							<i class="fa fa-dribbble fa-stack-1x fa-inverse"></i>-->
+<!--						</span></a>-->
+<!--                    </li>-->
                     <li><a href="#">
 						<span class="fa-stack fa-2x">
 							<i class="fa fa-circle fa-stack-2x"></i>
 							<i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
 						</span></a>
                     </li>
-                    <li><a href="#">
-						<span class="fa-stack fa-2x">
-							<i class="fa fa-circle fa-stack-2x"></i>
-							<i class="fa fa-pinterest fa-stack-1x fa-inverse"></i>
-						</span></a>
-                    </li>
+<!--                    <li><a href="#">-->
+<!--						<span class="fa-stack fa-2x">-->
+<!--							<i class="fa fa-circle fa-stack-2x"></i>-->
+<!--							<i class="fa fa-pinterest fa-stack-1x fa-inverse"></i>-->
+<!--						</span></a>-->
+<!--                    </li>-->
                 </ul>
             </div>
         </div>
