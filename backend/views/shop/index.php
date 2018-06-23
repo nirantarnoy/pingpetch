@@ -13,10 +13,11 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="shop-index">
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
+    <?php if(count($dataProvider->getModels())==0):?>
     <p>
         <?= Html::a(Yii::t('app', 'สร้างชื่อร้าน'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
+    <?php endif;?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
