@@ -8,12 +8,12 @@ class PhotoType
     const FLOW = 2;
     private static $data = [
         1 => 'Slide Top',
-        2 => 'Contact us',
+        2 => 'About us',
     ];
 
     private static $dataobj = [
         ['id'=>1,'name' => 'Slide Top'],
-        ['id'=>2,'name' => 'Contact us'],
+        ['id'=>2,'name' => 'About us'],
     ];
     public static function asArray()
     {
