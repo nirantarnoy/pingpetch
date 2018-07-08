@@ -204,7 +204,7 @@ $this->registerCss('
                     <?php foreach ($portfolio as $value):?>
                     <li>
                         <a href="#" data-largesrc="img/screenshots/<?=$value->photo?>" data-title="<?=$value->title?>" data-description="<?=$value->description?>">
-                            <img src="img/screenshots/<?=$value->photo?>" alt=""/>
+                            <img src="<?=Yii::$app->getUrlManager()->baseUrl?>/img/screenshots/<?=$value->photo?>" alt=""/>
                         </a>
                     </li>
                     <?php endforeach;?>

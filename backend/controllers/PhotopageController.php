@@ -81,7 +81,7 @@ class PhotopageController extends Controller
 
                     $maxx = Photopage::find()->max('photo');
                     $nums = explode('-',$maxx);
-                    if(count($nums)>0){
+                    if(count($nums)>0 && count($maxx) > 0){
                         $file = "slide-".($nums[1]+1).".".$uploaded->getExtension();
                     }else{
                         $file = "slide-1".".".$uploaded->getExtension();
