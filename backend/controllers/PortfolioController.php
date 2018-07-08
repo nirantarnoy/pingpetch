@@ -2,21 +2,17 @@
 
 namespace backend\controllers;
 
-use backend\helpers\PhotoType;
 use Yii;
-use backend\models\Photopage;
-use backend\models\PhotopageSearch;
+use backend\models\Portfolio;
+use backend\models\PortfolioSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
-
-
-
 /**
- * PhotopageController implements the CRUD actions for Photopage model.
+ * PortfolioController implements the CRUD actions for Portfolio model.
  */
-class PhotopageController extends Controller
+class PortfolioController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -34,12 +30,12 @@ class PhotopageController extends Controller
     }
 
     /**
-     * Lists all Photopage models.
+     * Lists all Portfolio models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new PhotopageSearch();
+        $searchModel = new PortfolioSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -49,7 +45,7 @@ class PhotopageController extends Controller
     }
 
     /**
-     * Displays a single Photopage model.
+     * Displays a single Portfolio model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -62,46 +58,32 @@ class PhotopageController extends Controller
     }
 
     /**
-     * Creates a new Photopage model.
+     * Creates a new Portfolio model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Photopage();
-        $path = Yii::getAlias('@frontend') .'/themes/alstar/dist/img/';
-
-        //echo $path;return;
+        $model = new Portfolio();
+        $path = Yii::getAlias('@frontend') .'/web/img/';
         if ($model->load(Yii::$app->request->post())) {
-            $uploaded = UploadedFile::getInstance($model,'photo');
-            if(!empty($uploaded)){
-                $folder = '';
-                if($model->photo_position ==1){
-                    $folder = 'bgslides';
+            if ($model->load(Yii::$app->request->post())) {
+                $uploaded = UploadedFile::getInstance($model,'photo');
+                if(!empty($uploaded)){
 
-                    $maxx = Photopage::find()->max('photo');
-                    $nums = explode('-',$maxx);
-                    if(count($nums)>0){
-                        $file = "slide-".($nums[1]+1).".".$uploaded->getExtension();
-                    }else{
-                        $file = "slide-1".".".$uploaded->getExtension();
+                    $folder = 'screenshots';
+                    $file = time().".".$uploaded->getExtension();
+
+
+                    if($uploaded->saveAs($path.'/'.$folder.'/'.$file)){
+                        $model->photo = $file;
                     }
 
-                }else if($model->photo_position ==2){
-                    $folder = 'about';
-                    $file = "about-1".".".$uploaded->getExtension();
+                }
+                if($model->save()){
+                    return $this->redirect(['view', 'id' => $model->id]);
                 }
 
-
-
-                if($uploaded->saveAs($path.'/'.$folder.'/'.$file)){
-                    $model->photo = $file;
-                }
-
-            }
-            if($model->save())
-            {
-                return $this->redirect(['index']);
             }
         }
 
@@ -111,7 +93,7 @@ class PhotopageController extends Controller
     }
 
     /**
-     * Updates an existing Photopage model.
+     * Updates an existing Portfolio model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -120,9 +102,33 @@ class PhotopageController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $path = Yii::getAlias('@frontend') .'/web/img/';
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->load(Yii::$app->request->post())) {
+                $uploaded = UploadedFile::getInstance($model,'photo');
+                $old = Yii::$app->request->post('old_photo');
+                if(!empty($uploaded)){
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+                    $folder = 'screenshots';
+                    $file = time().".".$uploaded->getExtension();
+
+
+                    if($uploaded->saveAs($path.'/'.$folder.'/'.$file)){
+                        $model->photo = $file;
+                    }
+
+                }else{
+                    $model->photo = $old;
+                }
+
+                if($model->save()){
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }
+
+            }
+            if($model->save()){
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         }
 
         return $this->render('update', [
@@ -131,7 +137,7 @@ class PhotopageController extends Controller
     }
 
     /**
-     * Deletes an existing Photopage model.
+     * Deletes an existing Portfolio model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -145,18 +151,18 @@ class PhotopageController extends Controller
     }
 
     /**
-     * Finds the Photopage model based on its primary key value.
+     * Finds the Portfolio model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Photopage the loaded model
+     * @return Portfolio the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Photopage::findOne($id)) !== null) {
+        if (($model = Portfolio::findOne($id)) !== null) {
             return $model;
         }
 
-        throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 }

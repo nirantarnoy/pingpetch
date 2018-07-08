@@ -32,7 +32,7 @@ class Services extends \yii\db\ActiveRecord
     {
         return [
             [['shop_id', 'name', 'created_at', 'updated_at'], 'integer'],
-            [['detail'], 'string'],
+            [['detail','title'], 'string'],
             [['photo'], 'string', 'max' => 255],
         ];
     }
@@ -45,9 +45,10 @@ class Services extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'shop_id' => Yii::t('app', 'Shop ID'),
-            'name' => Yii::t('app', 'Name'),
-            'detail' => Yii::t('app', 'Detail'),
-            'photo' => Yii::t('app', 'Photo'),
+            'name' => Yii::t('app', 'หัวข้อ'),
+            'title' => Yii::t('app', 'หัวข้อ'),
+            'detail' => Yii::t('app', 'รายละเอียด'),
+            'photo' => Yii::t('app', 'รูปภาพ'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
         ];

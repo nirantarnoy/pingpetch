@@ -33,7 +33,9 @@
                    // ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
                     ['label' => 'ข้อมูลร้าน', 'icon' => 'home', 'url' => ['/shop']],
                     ['label' => 'จัดการรูปภาพ', 'icon' => 'file-picture-o', 'url' => ['/photopage']],
-                //    ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
+                    ['label' => 'จัดการผลงาน', 'icon' => 'file-picture-o', 'url' => ['/portfolio']],
+                    ['label' => 'บริการ', 'icon' => 'file-code-o', 'url' => ['/service']],
+                    //    ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
 //                    [
 //                        'label' => 'Some tools',
 //                        'icon' => 'share',

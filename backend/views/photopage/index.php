@@ -9,6 +9,7 @@ use yii\widgets\Pjax;
 
 $this->title = Yii::t('app', 'จัดการรูปภาพ');
 $this->params['breadcrumbs'][] = $this->title;
+$path = Yii::getAlias('@frontend') .'/img/bgslides';
 ?>
 <div class="photopage-index">
 
@@ -26,10 +27,22 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
            // 'id',
-            'photo',
-            'photo_position',
+           [
+                   'attribute' => 'photo',
+                   'format' => 'html',
+                   'value' => function($data){
+                       return '<a href="#" target="_blank">'.$data->photo.'</a>';
+                   }
+           ],
+           // 'photo_position',
+            [
+                    'attribute' => 'photo_position',
+                 'value' => function($data){
+                   return \backend\helpers\PhotoType::getTypeById($data->photo_position);
+                 }
+            ],
             'caption',
-            'created_at',
+            //'created_at',
             //'updated_at',
 
             ['class' => 'yii\grid\ActionColumn'],

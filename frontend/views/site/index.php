@@ -8,6 +8,9 @@ $this->title = 'พิงค์เพชรเซอร์วิส';
 AlstarAsset::register($this);
 $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@alstar/dist');
 
+$service = \common\models\Services::find()->all();
+$portfolio = \common\models\Portfolio::find()->all();
+
 $this->registerCss('
      body{
                 font-family: "Cloud-Light";
@@ -118,51 +121,56 @@ $this->registerCss('
 
                     <!-- slides -->
                     <div class="carousel-inner">
-                        <div class="item active">
+                    <?php $i = 0; ?>
+                        <?php foreach ($service as $data):?>
+                        <?php $active = ''; if($i==0){$active='active';} ?>
+                        <div class="item <?=$active?>">
                             <div class="row">
                                 <div class="col-sm-12 col-md-offset-1 col-md-6">
                                     <div class="wow bounceInLeft">
-                                        <h4>Website Design</h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+                                        <h4><?=$data->title?></h4>
+                                        <p><?=$data->detail?></p>
                                     </div>
                                 </div>
                                 <div class="col-sm-12 col-md-5">
                                     <div class="screenshot wow bounceInRight">
-                                        <img src="<?=$directoryAsset?>/img/screenshots/1.png" class="img-responsive" alt="" />
+                                        <img src="img/screenshots/<?=$data->photo?>" class="img-responsive" alt="" />
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-sm-12 col-md-offset-1 col-md-6">
-                                    <div class="wow bounceInLeft">
-                                        <h4>Brand Identity</h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 col-md-5">
-                                    <div class="screenshot wow bounceInRight">
-                                        <img src="<?=$directoryAsset?>/img/screenshots/2.png" class="img-responsive" alt="" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-sm-12 col-md-offset-1 col-md-6">
-                                    <div class="wow bounceInLeft">
-                                        <h4>Web & Mobile Apps</h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 col-md-5">
-                                    <div class="screenshot wow bounceInRight">
-                                        <img src="<?=$directoryAsset?>/img/screenshots/3.png" class="img-responsive" alt="" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <?php $i+=1;?>
+                        <?php endforeach;?>
+<!--                        <div class="item">-->
+<!--                            <div class="row">-->
+<!--                                <div class="col-sm-12 col-md-offset-1 col-md-6">-->
+<!--                                    <div class="wow bounceInLeft">-->
+<!--                                        <h4>Brand Identity</h4>-->
+<!--                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="col-sm-12 col-md-5">-->
+<!--                                    <div class="screenshot wow bounceInRight">-->
+<!--                                        <img src="--><?//=$directoryAsset?><!--/img/screenshots/2.png" class="img-responsive" alt="" />-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="item">-->
+<!--                            <div class="row">-->
+<!--                                <div class="col-sm-12 col-md-offset-1 col-md-6">-->
+<!--                                    <div class="wow bounceInLeft">-->
+<!--                                        <h4>Web & Mobile Apps</h4>-->
+<!--                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="col-sm-12 col-md-5">-->
+<!--                                    <div class="screenshot wow bounceInRight">-->
+<!--                                        <img src="--><?//=$directoryAsset?><!--/img/screenshots/3.png" class="img-responsive" alt="" />-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
                     </div>
 
                     <!-- Indicators -->
@@ -193,71 +201,73 @@ $this->registerCss('
             <div class="col-lg-12">
 
                 <ul id="og-grid" class="og-grid">
+                    <?php foreach ($portfolio as $value):?>
                     <li>
-                        <a href="#" data-largesrc="<?=$directoryAsset?>/img/works/1.jpg" data-title="Portfolio title" data-description="Duo te dico volutpat, unum elit oblique per id. Ne duo mollis sapientem intellegebat. Per at augue vidisse percipit, pri vocibus assueverit interesset ut, no dolore luptatum incorrupte nec. In mentitum forensibus nec, nibh eripuit ut pri, tale illud voluptatum ut sea. Sed oratio repudiare ei, cum an magna labitur, eu atqui augue mei. Pri consul detracto eu, solet nusquam accusam ex vim, an movet interesset necessitatibus mea.">
-                            <img src="<?=$directoryAsset?>/img/works/thumbs/1.jpg" alt=""/>
+                        <a href="#" data-largesrc="img/screenshots/<?=$value->photo?>" data-title="<?=$value->title?>" data-description="<?=$value->description?>">
+                            <img src="img/screenshots/<?=$value->photo?>" alt=""/>
                         </a>
                     </li>
-                    <li>
-                        <a href="#" data-largesrc="<?=$directoryAsset?>/img/works/2.jpg" data-title="Portfolio title" data-description="Mea an eros periculis dignissim, quo mollis nostrum elaboraret et. Id quem perfecto mel, no etiam perfecto qui. No nisl legere recusabo nam, ius an tale pericula evertitur, dicat phaedrum qui in. Usu numquam legendos in, voluptaria sadipscing ut vel. Eu eum mandamus volutpat gubergren, eos ad detracto nominati, ne eum idque elitr aliquam.">
-                            <img src="<?=$directoryAsset?>/img/works/thumbs/2.jpg" alt=""/>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" data-largesrc="<?=$directoryAsset?>/img/works/3.jpg" data-title="Portfolio title" data-description="Vim ad persecuti appellantur. Eam ignota deterruisset eu, in omnis fierent convenire sed. Ne nulla veritus vel, liber euripidis in eos. Postea comprehensam vis in, detracto deseruisse mei ea. Ex sadipscing deterruisset concludaturque quo.">
-                            <img src="<?=$directoryAsset?>/img/works/thumbs/3.jpg" alt="img01"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" data-largesrc="<?=$directoryAsset?>/img/works/4.jpg" data-title="Portfolio title" data-description="In mentitum forensibus nec, nibh eripuit ut pri, tale illud voluptatum ut sea. Sed oratio repudiare ei, cum an magna labitur, eu atqui augue mei. Pri consul detracto eu, solet nusquam accusam ex vim, an movet interesset necessitatibus mea.">
-                            <img src="<?=$directoryAsset?>/img/works/thumbs/4.jpg" alt="img01"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" data-largesrc="<?=$directoryAsset?>/img/works/5.jpg" data-title="Portfolio title" data-description="Duo te dico volutpat, unum elit oblique per id. Ne duo mollis sapientem intellegebat. Per at augue vidisse percipit, pri vocibus assueverit interesset ut, no dolore luptatum incorrupte nec. In mentitum forensibus nec, nibh eripuit ut pri, tale illud voluptatum ut sea">
-                            <img src="<?=$directoryAsset?>/img/works/thumbs/5.jpg" alt="img01"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" data-largesrc="<?=$directoryAsset?>/img/works/6.jpg" data-title="Portfolio title" data-description="Id elit saepe pro. In atomorum constituam definitionem quo, at torquatos sadipscing eum, ut eum wisi meis mentitum. Probo feugiat ea duo. An usu platonem instructior, qui dolores inciderint ad. Te elit essent mea, vim ne atqui legimus invenire, ad dolor vitae sea.">
-                            <img src="<?=$directoryAsset?>/img/works/thumbs/6.jpg" alt="img01"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" data-largesrc="<?=$directoryAsset?>/img/works/7.jpg" data-title="Portfolio title" data-description="Duo te dico volutpat, unum elit oblique per id. Ne duo mollis sapientem intellegebat. Per at augue vidisse percipit, pri vocibus assueverit interesset ut, no dolore luptatum incorrupte nec. In mentitum forensibus nec, nibh eripuit ut pri, tale illud voluptatum ut sea. Sed oratio repudiare ei, cum an magna labitur, eu atqui augue mei.">
-                            <img src="<?=$directoryAsset?>/img/works/thumbs/7.jpg" alt="img01"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" data-largesrc="<?=$directoryAsset?>/img/works/8.jpg" data-title="Portfolio title" data-description="No nisl legere recusabo nam, ius an tale pericula evertitur, dicat phaedrum qui in. Usu numquam legendos in, voluptaria sadipscing ut vel. Eu eum mandamus volutpat gubergren, eos ad detracto nominati, ne eum idque elitr aliquam.">
-                            <img src="<?=$directoryAsset?>/img/works/thumbs/8.jpg" alt="img01"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" data-largesrc="<?=$directoryAsset?>/img/works/9.jpg" data-title="Portfolio title" data-description="Lorem ipsum dolor sit amet, ex pri quod ferri fastidii. Mazim philosophia eum ad, facilisis laboramus te est. Eam magna fabellas ut. Ne vis diceret accumsan salutandi, pro in impedit accusamus dissentias, ut nonumy eloquentiam ius.">
-                            <img src="<?=$directoryAsset?>/img/works/thumbs/9.jpg" alt="img01"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" data-largesrc="<?=$directoryAsset?>/img/works/10.jpg" data-title="Portfolio title" data-description="Duo te dico volutpat, unum elit oblique per id. Ne duo mollis sapientem intellegebat. Per at augue vidisse percipit, pri vocibus assueverit interesset ut, no dolore luptatum incorrupte nec. In mentitum forensibus nec, nibh eripuit ut pri, tale illud voluptatum ut sea. Sed oratio repudiare ei, cum an magna labitur, eu atqui augue mei. Pri consul detracto eu, solet nusquam accusam ex vim.">
-                            <img src="<?=$directoryAsset?>/img/works/thumbs/10.jpg" alt="img01"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" data-largesrc="<?=$directoryAsset?>/img/works/11.jpg" data-title="Portfolio title" data-description="Vim ad persecuti appellantur. Eam ignota deterruisset eu, in omnis fierent convenire sed. Ne nulla veritus vel, liber euripidis in eos. Postea comprehensam vis in, detracto deseruisse mei ea. Ex sadipscing deterruisset concludaturque quo.">
-                            <img src="<?=$directoryAsset?>/img/works/thumbs/11.jpg" alt="img01"/>
-                        </a>
-                    </li>
+                    <?php endforeach;?>
+<!--                    <li>-->
+<!--                        <a href="#" data-largesrc="--><?//=$directoryAsset?><!--/img/works/2.jpg" data-title="Portfolio title" data-description="Mea an eros periculis dignissim, quo mollis nostrum elaboraret et. Id quem perfecto mel, no etiam perfecto qui. No nisl legere recusabo nam, ius an tale pericula evertitur, dicat phaedrum qui in. Usu numquam legendos in, voluptaria sadipscing ut vel. Eu eum mandamus volutpat gubergren, eos ad detracto nominati, ne eum idque elitr aliquam.">-->
+<!--                            <img src="--><?//=$directoryAsset?><!--/img/works/thumbs/2.jpg" alt=""/>-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <a href="#" data-largesrc="--><?//=$directoryAsset?><!--/img/works/3.jpg" data-title="Portfolio title" data-description="Vim ad persecuti appellantur. Eam ignota deterruisset eu, in omnis fierent convenire sed. Ne nulla veritus vel, liber euripidis in eos. Postea comprehensam vis in, detracto deseruisse mei ea. Ex sadipscing deterruisset concludaturque quo.">-->
+<!--                            <img src="--><?//=$directoryAsset?><!--/img/works/thumbs/3.jpg" alt="img01"/>-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <a href="#" data-largesrc="--><?//=$directoryAsset?><!--/img/works/4.jpg" data-title="Portfolio title" data-description="In mentitum forensibus nec, nibh eripuit ut pri, tale illud voluptatum ut sea. Sed oratio repudiare ei, cum an magna labitur, eu atqui augue mei. Pri consul detracto eu, solet nusquam accusam ex vim, an movet interesset necessitatibus mea.">-->
+<!--                            <img src="--><?//=$directoryAsset?><!--/img/works/thumbs/4.jpg" alt="img01"/>-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <a href="#" data-largesrc="--><?//=$directoryAsset?><!--/img/works/5.jpg" data-title="Portfolio title" data-description="Duo te dico volutpat, unum elit oblique per id. Ne duo mollis sapientem intellegebat. Per at augue vidisse percipit, pri vocibus assueverit interesset ut, no dolore luptatum incorrupte nec. In mentitum forensibus nec, nibh eripuit ut pri, tale illud voluptatum ut sea">-->
+<!--                            <img src="--><?//=$directoryAsset?><!--/img/works/thumbs/5.jpg" alt="img01"/>-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <a href="#" data-largesrc="--><?//=$directoryAsset?><!--/img/works/6.jpg" data-title="Portfolio title" data-description="Id elit saepe pro. In atomorum constituam definitionem quo, at torquatos sadipscing eum, ut eum wisi meis mentitum. Probo feugiat ea duo. An usu platonem instructior, qui dolores inciderint ad. Te elit essent mea, vim ne atqui legimus invenire, ad dolor vitae sea.">-->
+<!--                            <img src="--><?//=$directoryAsset?><!--/img/works/thumbs/6.jpg" alt="img01"/>-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <a href="#" data-largesrc="--><?//=$directoryAsset?><!--/img/works/7.jpg" data-title="Portfolio title" data-description="Duo te dico volutpat, unum elit oblique per id. Ne duo mollis sapientem intellegebat. Per at augue vidisse percipit, pri vocibus assueverit interesset ut, no dolore luptatum incorrupte nec. In mentitum forensibus nec, nibh eripuit ut pri, tale illud voluptatum ut sea. Sed oratio repudiare ei, cum an magna labitur, eu atqui augue mei.">-->
+<!--                            <img src="--><?//=$directoryAsset?><!--/img/works/thumbs/7.jpg" alt="img01"/>-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <a href="#" data-largesrc="--><?//=$directoryAsset?><!--/img/works/8.jpg" data-title="Portfolio title" data-description="No nisl legere recusabo nam, ius an tale pericula evertitur, dicat phaedrum qui in. Usu numquam legendos in, voluptaria sadipscing ut vel. Eu eum mandamus volutpat gubergren, eos ad detracto nominati, ne eum idque elitr aliquam.">-->
+<!--                            <img src="--><?//=$directoryAsset?><!--/img/works/thumbs/8.jpg" alt="img01"/>-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <a href="#" data-largesrc="--><?//=$directoryAsset?><!--/img/works/9.jpg" data-title="Portfolio title" data-description="Lorem ipsum dolor sit amet, ex pri quod ferri fastidii. Mazim philosophia eum ad, facilisis laboramus te est. Eam magna fabellas ut. Ne vis diceret accumsan salutandi, pro in impedit accusamus dissentias, ut nonumy eloquentiam ius.">-->
+<!--                            <img src="--><?//=$directoryAsset?><!--/img/works/thumbs/9.jpg" alt="img01"/>-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <a href="#" data-largesrc="--><?//=$directoryAsset?><!--/img/works/10.jpg" data-title="Portfolio title" data-description="Duo te dico volutpat, unum elit oblique per id. Ne duo mollis sapientem intellegebat. Per at augue vidisse percipit, pri vocibus assueverit interesset ut, no dolore luptatum incorrupte nec. In mentitum forensibus nec, nibh eripuit ut pri, tale illud voluptatum ut sea. Sed oratio repudiare ei, cum an magna labitur, eu atqui augue mei. Pri consul detracto eu, solet nusquam accusam ex vim.">-->
+<!--                            <img src="--><?//=$directoryAsset?><!--/img/works/thumbs/10.jpg" alt="img01"/>-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <a href="#" data-largesrc="--><?//=$directoryAsset?><!--/img/works/11.jpg" data-title="Portfolio title" data-description="Vim ad persecuti appellantur. Eam ignota deterruisset eu, in omnis fierent convenire sed. Ne nulla veritus vel, liber euripidis in eos. Postea comprehensam vis in, detracto deseruisse mei ea. Ex sadipscing deterruisset concludaturque quo.">-->
+<!--                            <img src="--><?//=$directoryAsset?><!--/img/works/thumbs/11.jpg" alt="img01"/>-->
+<!--                        </a>-->
+<!--                    </li>-->
 <!--                    <li>-->
 <!--                        <a href="#" data-largesrc="img/works/12.jpg" data-title="Portfolio title" data-description="Mea an eros periculis dignissim, quo mollis nostrum elaboraret et. Id quem perfecto mel, no etiam perfecto qui. No nisl legere recusabo nam, ius an tale pericula evertitur, dicat phaedrum qui in. Usu numquam legendos in, voluptaria sadipscing ut vel. Eu eum mandamus volutpat gubergren, eos ad detracto nominati, ne eum idque elitr aliquam.">-->
 <!--                            <img src="img/works/thumbs/12.jpg" alt="img01"/>-->
 <!--                        </a>-->
 <!--                    </li>-->
-                    <li>
-                        <a href="#" data-largesrc="../themes/alstar/dist/img/works/ping1.jpg" data-title="Portfolio title" data-description="Mea an eros periculis dignissim, quo mollis nostrum elaboraret et. Id quem perfecto mel, no etiam perfecto qui. No nisl legere recusabo nam, ius an tale pericula evertitur, dicat phaedrum qui in. Usu numquam legendos in, voluptaria sadipscing ut vel. Eu eum mandamus volutpat gubergren, eos ad detracto nominati, ne eum idque elitr aliquam.">
-                            <img src="<?=$directoryAsset?>/img/works/thumbs/ping1.jpg" alt="img01"/>
-                        </a>
-                    </li>
+<!--                    <li>-->
+<!--                        <a href="#" data-largesrc="../themes/alstar/dist/img/works/ping1.jpg" data-title="Portfolio title" data-description="Mea an eros periculis dignissim, quo mollis nostrum elaboraret et. Id quem perfecto mel, no etiam perfecto qui. No nisl legere recusabo nam, ius an tale pericula evertitur, dicat phaedrum qui in. Usu numquam legendos in, voluptaria sadipscing ut vel. Eu eum mandamus volutpat gubergren, eos ad detracto nominati, ne eum idque elitr aliquam.">-->
+<!--                            <img src="--><?//=$directoryAsset?><!--/img/works/thumbs/ping1.jpg" alt="img01"/>-->
+<!--                        </a>-->
+<!--                    </li>-->
                 </ul>
 
             </div>
