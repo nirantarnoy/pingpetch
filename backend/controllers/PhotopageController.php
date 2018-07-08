@@ -69,7 +69,7 @@ class PhotopageController extends Controller
     public function actionCreate()
     {
         $model = new Photopage();
-        $path = Yii::getAlias('@frontend') .'/themes/alstar/dist/img/';
+        $path = Yii::getAlias('@frontend') .'/themes/alstar/dist/img';
 
         //echo $path;return;
         if ($model->load(Yii::$app->request->post())) {
