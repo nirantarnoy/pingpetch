@@ -134,7 +134,7 @@ $this->registerCss('
                                 </div>
                                 <div class="col-sm-12 col-md-5">
                                     <div class="screenshot wow bounceInRight">
-                                        <img src="@web/img/screenshots/<?=$data->photo?>" class="img-responsive" alt="" />
+                                        <img src="<?=Yii::$app->getUrlManager()->baseUrl?>/img/screenshots/<?=$data->photo?>" class="img-responsive" alt="" />
                                     </div>
                                 </div>
                             </div>
