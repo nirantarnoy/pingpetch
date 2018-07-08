@@ -66,7 +66,7 @@ class ServiceController extends Controller
     {
         $model = new Service();
 
-        $path = Yii::getAlias('@frontend') .'/web/img/';
+        $path = Yii::getAlias('@frontend') .'/web/img';
         if ($model->load(Yii::$app->request->post())) {
             $uploaded = UploadedFile::getInstance($model,'photo');
             if(!empty($uploaded)){
@@ -101,7 +101,7 @@ class ServiceController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $path = Yii::getAlias('@frontend') .'/web/img/';
+        $path = Yii::getAlias('@frontend') .'/web/img';
 
         if ($model->load(Yii::$app->request->post())) {
 

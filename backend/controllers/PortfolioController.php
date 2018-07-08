@@ -65,7 +65,7 @@ class PortfolioController extends Controller
     public function actionCreate()
     {
         $model = new Portfolio();
-        $path = Yii::getAlias('@frontend') .'/web/img/';
+        $path = Yii::getAlias('@frontend') .'/web/img';
         if ($model->load(Yii::$app->request->post())) {
             if ($model->load(Yii::$app->request->post())) {
                 $uploaded = UploadedFile::getInstance($model,'photo');
@@ -102,7 +102,7 @@ class PortfolioController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $path = Yii::getAlias('@frontend') .'/web/img/';
+        $path = Yii::getAlias('@frontend') .'/web/img';
         if ($model->load(Yii::$app->request->post())) {
             if ($model->load(Yii::$app->request->post())) {
                 $uploaded = UploadedFile::getInstance($model,'photo');
