@@ -61,8 +61,8 @@ return [
             'useFileTransport' => false,
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
-               // 'host' => 'smtp.gmail.com',173.194.205.108
-                'host' => 'gmail-smtp-msa.l.google.com',
+                'host' => 'smtp.gmail.com',
+       //         'host' => 'gmail-smtp-msa.l.google.com',
 //                'username' => 'panumas894@gmail.com',
 //                'password' => 'panumas4971596',
                 'username' => 'nirantarnoy@gmail.com',
