@@ -66,7 +66,7 @@ return [
 //                'password' => 'panumas4971596',
                 'username' => 'nirantarnoy@gmail.com',
                 'password' => 'somsri15',
-                'port' => '465',
+                'port' => '587',
                 'encryption' => 'ssl',
 //                'port' => '587',
 //                'encryption' => 'TLS',
