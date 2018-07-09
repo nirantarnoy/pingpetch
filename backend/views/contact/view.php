@@ -7,12 +7,10 @@ use yii\widgets\DetailView;
 /* @var $model backend\models\Contact */
 
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Contacts'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'ข้อมูลติดต่อ'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="contact-view">
-
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
         <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
@@ -28,13 +26,18 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
+          //  'id',
             'contact_name',
             'email:email',
             'title',
             'message:ntext',
             'social',
-            'created_at',
+            [
+                    'attribute'=>'created_at',
+                    'value'=>function($data){
+                        return date('d-m-Y',$data->created_at);
+                    }
+            ],
         ],
     ]) ?>
 
