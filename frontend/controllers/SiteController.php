@@ -224,6 +224,14 @@ class SiteController extends Controller
         if($model->load(Yii::$app->request->post())){
             $model->created_at = time();
            if($model->save()){
+                   Yii::$app->mailer->compose('@frontend/mail/layouts/register',[
+                       'fullname'=>'pingpetch'
+                   ])
+                   ->setFrom(['panumas894@gmail.com'=>'Pingpetch Web'])
+                   ->setTo('pingpetch168@gmail.com')
+                   ->setSubject($model->title)
+                   ->send();
+
                return $this->redirect(['index']);
            }
         }

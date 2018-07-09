@@ -474,10 +474,8 @@ $this->registerCss('
 <!--						</span></a>-->
 <!--                    </li>-->
                     <li><a href="#">
-						<span class="fa-stack fa-2x">
-							<i class="fa fa-circle fa-stack-2x"></i>
-							<i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-						</span></a>
+                            <b>Line ID : geethanyarud</b>
+						</a>
                     </li>
 <!--                    <li><a href="#">-->
 <!--						<span class="fa-stack fa-2x">-->
