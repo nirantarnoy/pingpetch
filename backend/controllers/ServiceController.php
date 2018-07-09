@@ -81,7 +81,7 @@ class ServiceController extends Controller
 
             }
             if($model->save()){
-                return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect(['index']);
             }
 
         }
@@ -123,12 +123,12 @@ class ServiceController extends Controller
                 }
 
                 if($model->save()){
-                    return $this->redirect(['view', 'id' => $model->id]);
+                    return $this->redirect(['index']);
                 }
 
             }
             if($model->save()){
-                return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect(['index']);
             }
 
         }
