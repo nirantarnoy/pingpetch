@@ -29,7 +29,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'title',
             'message:ntext',
             //'social',
-            'created_at',
+            [
+                    'attribute' => 'created_at',
+                    'value' => function($data){
+                        return date('d-m-Y',$data->created_at);
+                    }
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

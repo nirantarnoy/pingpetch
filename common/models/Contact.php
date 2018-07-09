@@ -30,9 +30,11 @@ class Contact extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['contact_name','email','title','message'],'required'],
             [['message'], 'string'],
             [['created'],'safe'],
             [['contact_name', 'email', 'title', 'social'], 'string', 'max' => 255],
+            [['email'],'email'],
         ];
     }
 

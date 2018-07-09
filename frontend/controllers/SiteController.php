@@ -18,6 +18,7 @@ use frontend\models\ContactForm;
  */
 class SiteController extends Controller
 {
+    public $enableCsrfValidation = false;
     /**
      * {@inheritdoc}
      */
@@ -73,8 +74,11 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $modelinfo = \common\models\Shop::find()->one();
+        $modelcontact = new \common\models\Contact();
         return $this->render('index',
-            ['modelinfo'=>$modelinfo
+            [
+                'modelinfo'=>$modelinfo,
+                'modelcontact'=>$modelcontact,
             ]);
     }
 
@@ -216,6 +220,12 @@ class SiteController extends Controller
         ]);
     }
     public function actionSendmessage(){
-        echo "ok";return;
+        $model = new \common\models\Contact();
+        if($model->load(Yii::$app->request->post())){
+            $model->created_at = time();
+           if($model->save()){
+               return $this->redirect(['index']);
+           }
+        }
     }
 }

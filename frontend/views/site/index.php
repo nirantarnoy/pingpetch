@@ -3,6 +3,8 @@
 /* @var $this yii\web\View */
 use frontend\themes\alstar\assets\AlstarAsset;
 use yii\helpers\Url;
+use yii\widgets\ActiveForm;
+use yii\helpers\Html;
 
 $this->title = 'พิงค์เพชรเซอร์วิส';
 AlstarAsset::register($this);
@@ -354,46 +356,67 @@ $this->registerCss('
                 <div id="sendmessage">Your message has been sent. Thank you!</div>
                 <div id="errormessage"></div>
 
-                <form action="<?=Url::to(['index.php?r=site/sendmessage'],true)?>" method="post" class="form-horizontal contactForm" role="form">
-                    <div class="col-md-offset-2 col-md-8">
-                        <div class="form-group">
-                            <input type="text" name="name" class="form-control" id="name" placeholder="ชื่อของคุณ" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                            <div class="validation"></div>
-                        </div>
-                    </div>
+                <?php $form = ActiveForm::begin(['action' => Url::to(['site/sendmessage'],true)]); ?>
 
-                    <div class="col-md-offset-2 col-md-8">
-                        <div class="form-group">
-                            <input type="email" class="form-control" name="email" id="email" placeholder="อีเมล์" data-rule="email" data-msg="Please enter a valid email" />
-                            <div class="validation"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-offset-2 col-md-8">
-                        <div class="form-group">
-                            <input type="text" class="form-control" name="social" id="social" placeholder="โซเชี่ยล" data-rule="social" data-msg="Please enter a valid social" />
-                            <div class="validation"></div>
-                        </div>
-                    </div>
+                <?= $form->field($modelcontact, 'contact_name')->textInput(['placeholder'=>'ชื่อผู้ติดต่อ','maxlength' => true])->label(false) ?>
 
-                    <div class="col-md-offset-2 col-md-8">
-                        <div class="form-group">
-                            <input type="text" class="form-control" name="subject" id="subject" placeholder="ชื่อเรื่อง" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-                            <div class="validation"></div>
-                        </div>
-                    </div>
+                <?= $form->field($modelcontact, 'email')->textInput(['placeholder'=>'อีเมล์','maxlength' => true])->label(false) ?>
 
-                    <div class="col-md-offset-2 col-md-8">
-                        <div class="form-group">
-                            <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="ข้อความ"></textarea>
-                            <div class="validation"></div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-8">
-                            <button type="submit" class="btn btn-theme btn-lg btn-block">ส่งข้อความ</button>
-                        </div>
-                    </div>
-                </form>
+                <?= $form->field($modelcontact, 'social')->textInput(['placeholder'=>'โซเชียล','maxlength' => true])->label(false) ?>
+
+                <?= $form->field($modelcontact, 'title')->textInput(['placeholder'=>'หัวข้อ','maxlength' => true])->label(false) ?>
+
+
+                <?= $form->field($modelcontact, 'message')->textarea(['placeholder'=>'ข้อความ','rows' => 6])->label(false) ?>
+
+
+
+                <div class="form-group">
+                    <?= Html::submitButton(Yii::t('app', 'ส่งข้อความ'), ['class' => 'btn btn-primary']) ?>
+                </div>
+
+                <?php ActiveForm::end(); ?>
+
+<!--                <form action="--><?//=Url::to(['site/sendmessage'],true)?><!--" method="post" class="form-horizontal contactForms" role="form">-->
+<!--                    <div class="col-md-offset-2 col-md-8">-->
+<!--                        <div class="form-group">-->
+<!--                            <input type="text" name="name" class="form-control" id="name" placeholder="ชื่อของคุณ" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />-->
+<!--                            <div class="validation"></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!---->
+<!--                    <div class="col-md-offset-2 col-md-8">-->
+<!--                        <div class="form-group">-->
+<!--                            <input type="email" class="form-control" name="email" id="email" placeholder="อีเมล์" data-rule="email" data-msg="Please enter a valid email" />-->
+<!--                            <div class="validation"></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-md-offset-2 col-md-8">-->
+<!--                        <div class="form-group">-->
+<!--                            <input type="text" class="form-control" name="social" id="social" placeholder="โซเชี่ยล" data-rule="social" data-msg="Please enter a valid social" />-->
+<!--                            <div class="validation"></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!---->
+<!--                    <div class="col-md-offset-2 col-md-8">-->
+<!--                        <div class="form-group">-->
+<!--                            <input type="text" class="form-control" name="subject" id="subject" placeholder="ชื่อเรื่อง" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />-->
+<!--                            <div class="validation"></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!---->
+<!--                    <div class="col-md-offset-2 col-md-8">-->
+<!--                        <div class="form-group">-->
+<!--                            <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="ข้อความ"></textarea>-->
+<!--                            <div class="validation"></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                        <div class="col-md-offset-2 col-md-8">-->
+<!--                            <button type="submit" class="btn btn-theme btn-lg btn-block">ส่งข้อความ</button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </form>-->
 
             </div>
         </div>
