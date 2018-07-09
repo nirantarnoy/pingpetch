@@ -55,6 +55,19 @@ return [
             ],
         ],
         */
+        'mailer' => [
+            'class' => 'yii\swiftmailer\Mailer',
+            'viewPath' => '@backend/mail',
+            'useFileTransport' => false,
+            'transport' => [
+                'class' => 'Swift_SmtpTransport',
+                'host' => 'smtp.mandrillapp.com',
+                'username' => 'username@gmail.com',
+                'password' => 'password',
+                'port' => '587',
+                'encryption' => 'tls',
+            ],
+        ],
     ],
     'params' => $params,
 ];

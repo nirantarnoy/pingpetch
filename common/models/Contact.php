@@ -43,12 +43,12 @@ class Contact extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'contact_name' => Yii::t('app', 'Contact Name'),
+            'contact_name' => Yii::t('app', 'ชื่อผู้ติดต่อ'),
             'email' => Yii::t('app', 'Email'),
-            'title' => Yii::t('app', 'Title'),
-            'message' => Yii::t('app', 'Message'),
+            'title' => Yii::t('app', 'หัวข้อ'),
+            'message' => Yii::t('app', 'ข้อความ'),
             'social' => Yii::t('app', 'Social'),
-            'created' => Yii::t('app', 'created'),
+            'created_at' => Yii::t('app', 'วันที่'),
         ];
     }
 }

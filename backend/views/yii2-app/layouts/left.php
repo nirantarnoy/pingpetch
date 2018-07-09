@@ -35,6 +35,7 @@
                     ['label' => 'จัดการรูปภาพ', 'icon' => 'file-picture-o', 'url' => ['/photopage']],
                     ['label' => 'จัดการผลงาน', 'icon' =>'list-alt', 'url' => ['/portfolio']],
                     ['label' => 'บริการ', 'icon' => 'file-code-o', 'url' => ['/service']],
+                    ['label' => 'ข้อความ', 'icon' => 'comments-o', 'url' => ['/contact']],
                     //    ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
 //                    [
 //                        'label' => 'Some tools',
