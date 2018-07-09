@@ -57,15 +57,17 @@ return [
         */
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
-            'viewPath' => '@backend/mail',
+            'viewPath' => '@frontend/mail',
             'useFileTransport' => false,
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
-                'host' => 'smtp.mandrillapp.com',
-                'username' => 'username@gmail.com',
-                'password' => 'password',
-                'port' => '587',
-                'encryption' => 'tls',
+                'host' => 'smtp.gmail.com',
+//                'username' => 'panumas894@gmail.com',
+//                'password' => 'panumas4971596',
+                'username' => 'nirantarnoy@gmail.com',
+                'password' => 'somsri15',
+                'port' => '465',
+                'encryption' => 'ssl',
             ],
         ],
     ],
