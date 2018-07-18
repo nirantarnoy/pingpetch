@@ -232,8 +232,8 @@ class SiteController extends Controller
                        'cus_social'=>$model->social,
                    ])
                    ->setFrom(['panumas894@gmail.com'=>'Pingpetch Web'])
-                   //    ->setTo('pingpetch168@gmail.com')
-                       ->setTo('niran_tarlek@hotmail.com')
+                       ->setTo('pingpetch168@gmail.com')
+                    //   ->setTo('niran_tarlek@hotmail.com')
                        ->setSubject($model->title)
                    ->send();
 
