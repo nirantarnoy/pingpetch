@@ -65,9 +65,11 @@ return [
        //         'host' => 'gmail-smtp-msa.l.google.com',
 //                'username' => 'panumas894@gmail.com',
 //                'password' => 'panumas4971596',
-                'username' => 'apikey',
-                'password' => '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
-',
+                'username' => 'nirantarnoy@gmail.com',
+                'password' => 'somsri15',
+       //         'username' => 'apikey',
+     //           'password' => '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
+//',
                 'port' => '465',
                 'encryption' => 'ssl',
             //    'port' => '587',
