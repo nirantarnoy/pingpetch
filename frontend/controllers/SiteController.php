@@ -224,17 +224,17 @@ class SiteController extends Controller
         if($model->load(Yii::$app->request->post())){
             $model->created_at = time();
            if($model->save()){
-//                   Yii::$app->mailer->compose('@frontend/mail/layouts/contact',[
-//                       'fullname'=>'pingpetch',
-//                       'title'=>$model->title,
-//                       'message'=>$model->message,
-//                       'cus_email'=>$model->email,
-//                       'cus_social'=>$model->social,
-//                   ])
-//                   ->setFrom(['panumas894@gmail.com'=>'Pingpetch Web'])
-//                   ->setTo('pingpetch168@gmail.com')
-//                   ->setSubject($model->title)
-//                   ->send();
+                   Yii::$app->mailer->compose('@frontend/mail/layouts/contact',[
+                       'fullname'=>'pingpetch',
+                       'title'=>$model->title,
+                       'message'=>$model->message,
+                       'cus_email'=>$model->email,
+                       'cus_social'=>$model->social,
+                   ])
+                   ->setFrom(['panumas894@gmail.com'=>'Pingpetch Web'])
+                   ->setTo('pingpetch168@gmail.com')
+                   ->setSubject($model->title)
+                   ->send();
 
                return $this->redirect(['index']);
            }
