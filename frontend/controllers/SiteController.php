@@ -233,7 +233,7 @@ class SiteController extends Controller
                    ])
                    ->setFrom(['panumas894@gmail.com'=>'Pingpetch Web'])
                    //    ->setTo('pingpetch168@gmail.com')
-                       ->setTo('nirantarnoy@gmail.com')
+                       ->setTo('niran_tarlek@hotmail.com')
                        ->setSubject($model->title)
                    ->send();
 
