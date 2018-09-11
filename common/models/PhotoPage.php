@@ -30,7 +30,7 @@ class PhotoPage extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['photo'],'required'],
+           // [['photo'],'required'],
             [['photo_position', 'created_at', 'updated_at'], 'integer'],
             [['photo', 'caption'], 'string', 'max' => 255],
         ];

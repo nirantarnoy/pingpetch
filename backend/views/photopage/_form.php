@@ -14,7 +14,9 @@ use yii\helpers\ArrayHelper;
 
     <?php $form = ActiveForm::begin(['options' =>['enctype'=>'multipart/form-data']]); ?>
 
+    <input type="hidden" name="old_photo" value="<?=$model->photo?>">
     <?= $form->field($model, 'photo')->fileInput(['maxlength' => true]) ?>
+    <a target="_blank" href="<?=Yii::getAlias('@frontend') .'/themes/alstar/dist/img/bgslides/'.$model->photo?>"><?=$model->photo?></a>
 
     <?= $form->field($model, 'photo_position')->widget(Select2::className(),[
             'data'=> ArrayHelper::map(\backend\helpers\PhotoType::asArrayObject(),'id','name'),

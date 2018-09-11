@@ -120,9 +120,43 @@ class PhotopageController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $path = Yii::getAlias('@frontend') .'/themes/alstar/dist/img';
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
+        if ($model->load(Yii::$app->request->post())) {
+            $uploaded = UploadedFile::getInstance($model,'photo');
+            $old_photo = Yii::$app->request->post("old_photo");
+           // echo $old_photo;return;
+            if(!empty($uploaded)){
+                $folder = '';
+                if($model->photo_position ==1){
+                    $folder = 'bgslides';
+
+                    $maxx = Photopage::find()->max('photo');
+                    $nums = explode('-',$maxx);
+                    if(count($nums)>0 && count($maxx) > 0){
+                        $file = "slide-".($nums[1]+1).".".$uploaded->getExtension();
+                    }else{
+                        $file = "slide-1".".".$uploaded->getExtension();
+                    }
+
+                }else if($model->photo_position ==2){
+                    $folder = 'about';
+                    $file = "about-1".".".$uploaded->getExtension();
+                }
+
+
+
+                if($uploaded->saveAs($path.'/'.$folder.'/'.$file)){
+                    $model->photo = $file;
+                }
+
+            }else{
+                $model->photo = $old_photo;
+            }
+            if($model->save())
+            {
+                return $this->redirect(['index']);
+            }
         }
 
         return $this->render('update', [
