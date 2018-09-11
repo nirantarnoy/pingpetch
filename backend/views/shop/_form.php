@@ -26,6 +26,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'work_title')->textarea(['rows' => 6]) ?>
     <?= $form->field($model, 'contact_title')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'slogan_top')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'slogan_bottom')->textarea(['rows' => 6]) ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>

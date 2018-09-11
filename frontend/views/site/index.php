@@ -12,7 +12,7 @@ $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@alstar/dist');
 
 $service = \common\models\Services::find()->all();
 $portfolio = \common\models\Portfolio::find()->all();
-
+$path = Yii::getAlias('@frontend') .'/themes/alstar/dist/img';
 $this->registerCss('
      body{
                 font-family: "Cloud-Light";
@@ -79,7 +79,7 @@ $this->registerCss('
         </div>
         <div class="row wow fadeInUp">
             <div class="col-md-6 about-img">
-                <img src="<?=$directoryAsset?>/img/pingpetch.png" alt="">
+                <img src="../themes/alstar/dist/img/about/"<?=$about_photo->photo?> alt="">
             </div>
 
             <div class="col-md-6 content" style="font-family: 'Cloud-Light';font-size: 24px;text-align: left;">
@@ -97,8 +97,8 @@ $this->registerCss('
         <div class="row">
             <div class="col-md-12">
                 <div class="color-light">
-                    <h2 class="wow bounceInDown" data-wow-delay="0.5s" style="font-family: 'Cloud-Light';font-size: 34px">รายละเอียดที่ประณีตคืองานของเรา</h2>
-                    <p class="lead wow bounceInUp" data-wow-delay="1s">กับการผสมประสานเข้ากับเทคโนโลยีและแนวความคิดสมัยใหม่</p>
+                    <h2 class="wow bounceInDown" data-wow-delay="0.5s" style="font-family: 'Cloud-Light';font-size: 34px"><?=$modelinfo->slogan_top?></h2>
+                    <p class="lead wow bounceInUp" data-wow-delay="1s"><?=$modelinfo->slogan_bottom?></p>
                 </div>
             </div>
         </div>

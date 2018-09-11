@@ -31,7 +31,7 @@ class Shop extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['address','aboutus','service_title','work_title','contact_title'], 'string'],
+            [['address','aboutus','service_title','work_title','contact_title','slogan_top','slogan_bottom'], 'string'],
             [['created_at', 'updated_at'], 'integer'],
             [['name', 'tel', 'email'], 'string', 'max' => 255],
         ];
@@ -51,6 +51,8 @@ class Shop extends \yii\db\ActiveRecord
             'contact_title' => Yii::t('app', 'ติดต่อเรา'),
             'address' => Yii::t('app', 'ที่อยู่'),
             'tel' => Yii::t('app', 'เบอร์ติดต่อ'),
+            'slogan_top'=>'สโลแกน1',
+            'slogan_bottom'=>'สโลแกน2',
             'email' => Yii::t('app', 'Email'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),

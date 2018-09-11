@@ -75,10 +75,12 @@ class SiteController extends Controller
     {
         $modelinfo = \common\models\Shop::find()->one();
         $modelcontact = new \common\models\Contact();
+        $modelphoto_about = \backend\models\Photopage::find()->where(['photo_position'=>2])->one();
         return $this->render('index',
             [
                 'modelinfo'=>$modelinfo,
                 'modelcontact'=>$modelcontact,
+                'about_photo'=>$modelphoto_about,
             ]);
     }
 
