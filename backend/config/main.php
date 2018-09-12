@@ -13,6 +13,9 @@ return [
     'bootstrap' => ['log'],
     'modules' => [],
     'components' => [
+        'assetManager' => [
+            'forceCopy' => true,
+        ],
         'view' => [
             'theme' => [
                 'pathMap' => [

@@ -66,21 +66,38 @@ class PortfolioController extends Controller
     {
         $model = new Portfolio();
         $path = Yii::getAlias('@frontend') .'/web/img';
+        $modelfile = new \backend\models\Modelfile();
         if ($model->load(Yii::$app->request->post())) {
             if ($model->load(Yii::$app->request->post())) {
-                $uploaded = UploadedFile::getInstance($model,'photo');
-                if(!empty($uploaded)){
-
-                    $folder = 'screenshots';
-                    $file = time().".".$uploaded->getExtension();
-
-
-                    if($uploaded->saveAs($path.'/'.$folder.'/'.$file)){
-                        $model->photo = $file;
-                    }
-
-                }
+                $uploadeds = UploadedFile::getInstances($modelfile,'file');
+               // echo count($uploadeds);return;
+//                if(!empty($uploadeds)){
+//                    foreach($uploadeds as $files){
+//                        echo $files->name;
+//                    }
+//                }
+//                return;
                 if($model->save()){
+                    $i = 0;
+                    if(!empty($uploadeds)){
+                        foreach($uploadeds as $files){
+                            $i+=1;
+                            $folder = 'screenshots';
+                            $file = time().".".$files->getExtension();
+
+                            if($files->saveAs($path.'/'.$folder.'/'.$file)){
+                               $model_gallery = new \backend\models\Portgallery();
+                               $model_gallery->port_id = $model->id;
+                               $model_gallery->name = $files->name;
+                               $model_gallery->filename = $file;
+                               $model_gallery->save();
+                            }
+                            if($i ==1){
+                                //$model->photo = '';//$file;
+                            }
+
+                        }
+                    }
                     return $this->redirect(['index']);
                 }
 
@@ -89,6 +106,7 @@ class PortfolioController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'modelfile'=>$modelfile,
         ]);
     }
 
@@ -102,6 +120,8 @@ class PortfolioController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $modelfile = new \backend\models\Modelfile();
+        $model_gallery = \backend\models\Portgallery::find()->where(['port_id'=>$id])->all();
         $path = Yii::getAlias('@frontend') .'/web/img';
         if ($model->load(Yii::$app->request->post())) {
             if ($model->load(Yii::$app->request->post())) {
@@ -133,6 +153,8 @@ class PortfolioController extends Controller
 
         return $this->render('update', [
             'model' => $model,
+            'modelfile'=>$modelfile,
+            'model_gallery'=>$model_gallery,
         ]);
     }
 

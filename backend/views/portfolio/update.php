@@ -13,6 +13,8 @@ $this->params['breadcrumbs'][] = 'แก้ไข';
 <div class="portfolio-update">
     <?= $this->render('_form', [
         'model' => $model,
+        'modelfile'=>$modelfile,
+        'model_gallery'=>$model_gallery,
     ]) ?>
 
 </div>

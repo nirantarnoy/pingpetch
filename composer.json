@@ -34,7 +34,8 @@
         "kartik-v/yii2-widget-datetimepicker": "*",
         "yiisoft/yii2-jui": "~2.0.0",
         "liyunfang/yii2-contextmenu": "*",
-        "dmstr/yii2-adminlte-asset": "^2.1"
+        "dmstr/yii2-adminlte-asset": "^2.1",
+        "kartik-v/yii2-widget-fileinput": "@dev"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
