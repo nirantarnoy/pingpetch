@@ -9,11 +9,13 @@ class PhotoType
     private static $data = [
         1 => 'Slide Top',
         2 => 'About us',
+        3 => 'Slogan',
     ];
 
     private static $dataobj = [
         ['id'=>1,'name' => 'Slide Top'],
         ['id'=>2,'name' => 'About us'],
+        ['id'=>3,'name' => 'Slogan'],
     ];
     public static function asArray()
     {

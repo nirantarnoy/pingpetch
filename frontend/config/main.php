@@ -15,6 +15,9 @@ return [
         '@alstar' => '@frontend/themes/alstar',
     ],
     'components' => [
+        'assetManager' => [
+            'forceCopy' => true,
+        ],
 
         'view' => [
             'theme' => [
