@@ -90,6 +90,7 @@ class PortfolioController extends Controller
                                $model_gallery->port_id = $model->id;
                                $model_gallery->name = $files->name;
                                $model_gallery->filename = $file;
+                               $model_gallery->isprimary = $i==1?1:0;
                                $model_gallery->save();
                             }
                             if($i ==1){

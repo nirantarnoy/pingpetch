@@ -20,10 +20,18 @@ $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/web/img/sc
     <?= $form->field($model, 'description')->textarea(['maxlength' => true]) ?>
     <hr />
     <?php if(!$model->isNewRecord): ?>
+      <div class="panel panel-body">  <div class="row">
        <?php foreach ($model_gallery as $value):?>
-           <?php echo Html::img($path."/".$value->filename) ?>
-        <?php echo $value->filename; ?>
-       <?php endforeach;?>
+
+               <div class="col-xs-6 col-md-3">
+                   <a href="#" class="thumbnail">
+                       <img src="../../frontend/web/img/screenshots/<?=$value->filename?>" alt="">
+                   </a>
+               </div>
+
+           <?php //echo Html::img("../../frontend/web/img/screenshots/".$value->filename,['width'=>'10%','class'=>'thumbnail']) ?>
+       <?php endforeach;?></div>
+      </div>
     <?php endif;?>
 
     <?php echo "<h5>แนบไฟล์</h5>";?>
