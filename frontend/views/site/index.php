@@ -19,6 +19,180 @@ $this->registerCss('
                 font-size: 16px;
             }
 ');
+$css = <<<CSS
+  .row > .column {
+  padding: 0 8px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Create four equal columns that floats next to eachother */
+.column {
+  float: left;
+  width: 25%;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: black;
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  width: 90%;
+  max-width: 1200px;
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #999;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Hide the slides by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* Caption text */
+.caption-container {
+  text-align: center;
+  background-color: black;
+  padding: 2px 16px;
+  color: white;
+}
+
+img.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+
+img.hover-shadow {
+  transition: 0.3s;
+}
+
+.hover-shadow:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+CSS;
+
+$this->registerCss($css);
+
+$js=<<<JS
+        function openModal() {
+          document.getElementById('myModal').style.display = "block";
+        }
+        
+        // Close the Modal
+        function closeModal() {
+          document.getElementById('myModal').style.display = "none";
+        }
+        
+        var slideIndex = 1;
+        showSlides(slideIndex);
+        
+        // Next/previous controls
+        function plusSlides(n) {
+          showSlides(slideIndex += n);
+        }
+        
+        // Thumbnail image controls
+        function currentSlide(n) {
+          showSlides(slideIndex = n);
+        }
+        
+        function showSlides(n) {
+          var i;
+          var slides = document.getElementsByClassName("mySlides");
+          var dots = document.getElementsByClassName("demo");
+          var captionText = document.getElementById("caption");
+          if (n > slides.length) {slideIndex = 1}
+          if (n < 1) {slideIndex = slides.length}
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+          }
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+          }
+          slides[slideIndex-1].style.display = "block";
+          dots[slideIndex-1].className += " active";
+          captionText.innerHTML = dots[slideIndex-1].alt;
+        }
+JS;
+$this->registerJs($js,static::POS_END);
+
+
 ?>
 <!-- Navigation -->
 <nav class="navbar navbar-default" role="navigation">
@@ -56,9 +230,9 @@ $this->registerCss('
         <div class="container">
             <div class="col-md-12">
                 <div id="rotator">
-                    <h1 style="font-family: 'Cloud-Light';font-size: 45px"><span class="1strotate">กราฟิก ดีไซน์,สติ๊กเกอร์ ไดคัท, ตรายาง ป้ายโฆษณา</span></h1>
+                    <h1 style="font-family: 'Cloud-Light';font-size: 45px"><span class="1strotate"><?=$thai_text?></span></h1>
                     <div class="line-spacer"></div>
-                    <p><span class="2ndrotate">Graphic Design, Sticker diecut, Bill board</span></p>
+                    <p><span class="2ndrotate"><?=$eng_text?></span></p>
                 </div>
             </div>
         </div>
@@ -201,15 +375,24 @@ $this->registerCss('
         </div>
         <div class="row">
             <div class="col-lg-12">
-
-                <ul id="og-grid" class="og-grid">
+                <div class="row">
+                    <?php $i=0;?>
                     <?php foreach ($portfolio as $value):?>
-                    <li>
-                        <a href="#" data-largesrc="img/screenshots/<?=$value->photo?>" data-title="<?=$value->title?>" data-description="<?=$value->description?>">
-                            <img src="<?=Yii::$app->getUrlManager()->baseUrl?>/img/screenshots/<?=$value->photo?>" alt=""/>
-                        </a>
-                    </li>
+                        <?php $i+=1;?>
+                        <div class="column">
+                            <img src="<?=Yii::$app->getUrlManager()->baseUrl?>/img/screenshots/<?=$value->photo?>" onclick="openModal();currentSlide($i)" class="hover-shadow">
+                        </div>
+
                     <?php endforeach;?>
+                </div>
+<!--                <ul id="og-grid" class="og-grid">-->
+                    <?php //foreach ($portfolio as $value):?>
+<!--                    <li>-->
+<!--                        <a href="#" data-largesrc="img/screenshots/--><?php //echo $value->photo?><!--" data-title="--><?php //echo $value->title?><!--" data-description="--><?php //echo $value->description?><!--">-->
+<!--                            <img src="--><?php //echo Yii::$app->getUrlManager()->baseUrl?><!--/img/screenshots/'<?php //echo $value->photo?><!--" alt=""/>-->
+<!--                        </a>-->
+<!--                    </li>-->
+                    <?php //endforeach;?>
 <!--                    <li>-->
 <!--                        <a href="#" data-largesrc="--><?//=$directoryAsset?><!--/img/works/2.jpg" data-title="Portfolio title" data-description="Mea an eros periculis dignissim, quo mollis nostrum elaboraret et. Id quem perfecto mel, no etiam perfecto qui. No nisl legere recusabo nam, ius an tale pericula evertitur, dicat phaedrum qui in. Usu numquam legendos in, voluptaria sadipscing ut vel. Eu eum mandamus volutpat gubergren, eos ad detracto nominati, ne eum idque elitr aliquam.">-->
 <!--                            <img src="--><?//=$directoryAsset?><!--/img/works/thumbs/2.jpg" alt=""/>-->
@@ -270,7 +453,7 @@ $this->registerCss('
 <!--                            <img src="--><?//=$directoryAsset?><!--/img/works/thumbs/ping1.jpg" alt="img01"/>-->
 <!--                        </a>-->
 <!--                    </li>-->
-                </ul>
+<!--                </ul>-->
 
             </div>
         </div>
@@ -486,6 +669,7 @@ $this->registerCss('
                 </ul>
             </div>
         </div>
+
     </div>
 </section>
 
@@ -510,4 +694,59 @@ $this->registerCss('
 </footer>
 
 <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+<div id="myModal" class="modal" style="z-index: 19990">
+    <span class="close cursor" onclick="closeModal()">&times;</span>
+    <div class="modal-content">
+        <?php $i=0;?>
+        <?php foreach ($portfolio as $value):?>
+            <?php $i+=1;?>
+
+            <div class="mySlides">
+                <div class="numbertext"><?=$i?> / <?=count($portfolio)?></div>
+                <img src="<?=Yii::$app->getUrlManager()->baseUrl?>/img/screenshots/<?=$value->photo?>" style="width:100%">
+            </div>
+        <?php endforeach;?>
+<!--        <div class="mySlides">-->
+<!--            <div class="numbertext">1 / 4</div>-->
+<!--            <img src="img1_wide.jpg" style="width:100%">-->
+<!--        </div>-->
+<!---->
+<!--        <div class="mySlides">-->
+<!--            <div class="numbertext">2 / 4</div>-->
+<!--            <img src="img2_wide.jpg" style="width:100%">-->
+<!--        </div>-->
+<!---->
+<!--        <div class="mySlides">-->
+<!--            <div class="numbertext">3 / 4</div>-->
+<!--            <img src="img3_wide.jpg" style="width:100%">-->
+<!--        </div>-->
+<!---->
+<!--        <div class="mySlides">-->
+<!--            <div class="numbertext">4 / 4</div>-->
+<!--            <img src="img4_wide.jpg" style="width:100%">-->
+<!--        </div>-->
+
+        <!-- Next/previous controls -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+        <!-- Caption text -->
+        <div class="caption-container">
+            <p id="caption"></p>
+        </div>
+
+        <!-- Thumbnail image controls -->
+
+            <?php $i=0;?>
+            <?php foreach ($portfolio as $value):?>
+                <?php $i+=1;?>
+                <div class="column">
+                    <img class="demo" src="<?=Yii::$app->getUrlManager()->baseUrl?>/img/screenshots/<?=$value->photo?>" onclick="currentSlide(1)" alt="Nature">
+                </div>
+
+            <?php endforeach;?>
+
+    </div>
+</div>
 

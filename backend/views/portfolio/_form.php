@@ -48,6 +48,7 @@ $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@frontend/web/img/sc
         ],
     ]);
     ?>
+    <br>
     <input type="hidden" name="old_photo" value="<?=$model->photo?>">
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

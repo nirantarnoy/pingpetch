@@ -75,12 +75,38 @@ class SiteController extends Controller
     {
         $modelinfo = \common\models\Shop::find()->one();
         $modelcontact = new \common\models\Contact();
-        $modelphoto_about = \backend\models\Photopage::find()->where(['photo_position'=>2])->one();
+        $modelslidetext = \backend\models\Photopage::find()->where(['photo_position'=>1])->all();
+        $modelphoto_about = \backend\models\Photopage::find()->where(['photo_position'=>2])->orderBy(['id'=>SORT_ASC])->one();
+
+        $thai_text = '';
+        $eng_text = '';
+        $i = 0;
+
+        if($modelslidetext){
+            foreach ($modelslidetext as $value){
+                $i+=1;
+                $x = explode(",",$value->caption);
+                if($i==1){
+                    if(count($x)==2){
+                        $thai_text = $x[0];
+                        $eng_text = $x[1];
+                    }
+                }else{
+                    if(count($x)==2){
+                        $thai_text .= ','.$x[0];
+                        $eng_text .= ','.$x[1];
+                    }
+                }
+            }
+        }
+
         return $this->render('index',
             [
                 'modelinfo'=>$modelinfo,
                 'modelcontact'=>$modelcontact,
                 'about_photo'=>$modelphoto_about,
+                'thai_text'=>$thai_text,
+                'eng_text' => $eng_text,
             ]);
     }
 
