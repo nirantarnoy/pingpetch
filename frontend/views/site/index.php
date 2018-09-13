@@ -11,7 +11,7 @@ AlstarAsset::register($this);
 $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@alstar/dist');
 
 $service = \common\models\Services::find()->all();
-$portfolio = \common\models\Portfolio::find()->all();
+$portfolio = \common\models\Portfolio::find()->where(['!=','photo',''])->all();
 $path = Yii::getAlias('@frontend') .'/themes/alstar/dist/img';
 $this->registerCss('
      body{
@@ -253,7 +253,7 @@ $this->registerJs($js,static::POS_END);
         </div>
         <div class="row wow fadeInUp">
             <div class="col-md-6 about-img">
-                <img src="../themes/alstar/dist/img/about/"<?=$about_photo->photo?> alt="">
+                <img src="../../frontend/themes/alstar/dist/img/about/<?=$about_photo->photo?>" alt="">
             </div>
 
             <div class="col-md-6 content" style="font-family: 'Cloud-Light';font-size: 24px;text-align: left;">
