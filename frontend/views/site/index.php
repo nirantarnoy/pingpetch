@@ -83,7 +83,22 @@ $css = <<<CSS
 }
 
 /* Next & previous buttons */
-.prev,
+.prev{
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 0px;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
 .next {
   cursor: pointer;
   position: absolute;
