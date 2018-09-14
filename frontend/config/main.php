@@ -50,6 +50,10 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        'mailer'=>[
+            'class'=>'yii\swiftmailer\Mailer',
+            'enableSwiftMailerLogging' => true,
+        ]
         /*
         'urlManager' => [
             'enablePrettyUrl' => true,
