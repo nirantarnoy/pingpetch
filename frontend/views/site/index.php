@@ -12,6 +12,7 @@ $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@alstar/dist');
 
 $service = \common\models\Services::find()->all();
 $portfolio = \common\models\Portfolio::find()->where(['!=','photo',''])->all();
+$portgallery = \backend\models\Portgallery::find()->all();
 $path = Yii::getAlias('@frontend') .'/themes/alstar/dist/img';
 $this->registerCss('
      body{
@@ -393,10 +394,10 @@ $this->registerJs($js,static::POS_END);
             <div class="col-lg-12">
                 <div class="row">
                     <?php $i=0;?>
-                    <?php foreach ($portfolio as $value):?>
+                    <?php foreach ($portgallery as $value):?>
                         <?php $i+=1;?>
-                        <div class="column">
-                            <img src="<?=Yii::$app->getUrlManager()->baseUrl?>/img/screenshots/<?=$value->photo?>" onclick="openModal();currentSlide($i)" class="hover-shadow">
+                        <div class="column" style="padding-top: 5px;">
+                            <img src="<?=Yii::$app->getUrlManager()->baseUrl?>/img/screenshots/<?=$value->filename?>" onclick="openModal();currentSlide($i)" class="hover-shadow" style="width: 80%" />
                         </div>
 
                     <?php endforeach;?>
@@ -715,12 +716,12 @@ $this->registerJs($js,static::POS_END);
     <span class="close cursor" onclick="closeModal()">&times;</span>
     <div class="modal-content">
         <?php $i=0;?>
-        <?php foreach ($portfolio as $value):?>
+        <?php foreach ($portgallery as $value):?>
             <?php $i+=1;?>
 
             <div class="mySlides">
-                <div class="numbertext"><?=$i?> / <?=count($portfolio)?></div>
-                <img src="<?=Yii::$app->getUrlManager()->baseUrl?>/img/screenshots/<?=$value->photo?>" style="width:100%">
+                <div class="numbertext"><?=$i?> / <?=count($portgallery)?></div>
+                <img src="<?=Yii::$app->getUrlManager()->baseUrl?>/img/screenshots/<?=$value->name?>" style="width:100%">
             </div>
         <?php endforeach;?>
 <!--        <div class="mySlides">-->
@@ -755,10 +756,10 @@ $this->registerJs($js,static::POS_END);
         <!-- Thumbnail image controls -->
 
             <?php $i=0;?>
-            <?php foreach ($portfolio as $value):?>
+            <?php foreach ($portgallery as $value):?>
                 <?php $i+=1;?>
                 <div class="column">
-                    <img class="demo" src="<?=Yii::$app->getUrlManager()->baseUrl?>/img/screenshots/<?=$value->photo?>" onclick="currentSlide(1)" alt="Nature">
+                    <img class="demo" src="<?=Yii::$app->getUrlManager()->baseUrl?>/img/screenshots/<?=$value->name?>" onclick="currentSlide(1)" alt="Nature">
                 </div>
 
             <?php endforeach;?>

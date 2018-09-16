@@ -83,6 +83,7 @@ class SiteController extends Controller
         $modelslidetext = \backend\models\Photopage::find()->where(['photo_position'=>1])->all();
         $modelphoto_about = \backend\models\Photopage::find()->where(['photo_position'=>2])->orderBy(['id'=>SORT_ASC])->one();
 
+
         $thai_text = '';
         $eng_text = '';
         $i = 0;

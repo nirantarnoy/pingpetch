@@ -454,16 +454,16 @@
         },
         {
             "name": "composer/installers",
-            "version": "v1.5.0",
+            "version": "v1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "049797d727261bf27f2690430d935067710049c2"
+                "reference": "cfcca6b1b60bc4974324efb5783c13dca6932b5b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/049797d727261bf27f2690430d935067710049c2",
-                "reference": "049797d727261bf27f2690430d935067710049c2",
+                "url": "https://api.github.com/repos/composer/installers/zipball/cfcca6b1b60bc4974324efb5783c13dca6932b5b",
+                "reference": "cfcca6b1b60bc4974324efb5783c13dca6932b5b",
                 "shasum": ""
             },
             "require": {
@@ -570,7 +570,7 @@
                 "zend",
                 "zikula"
             ],
-            "time": "2017-12-29T09:13:20+00:00"
+            "time": "2018-08-27T06:10:37+00:00"
         },
         {
             "name": "dmstr/yii2-adminlte-asset",
@@ -991,12 +991,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-grid.git",
-                "reference": "30ee1f8b519454ec5e9f0cea0cd556a0ee2e637e"
+                "reference": "951eada4f20593ace18295336c75fd16b353ded0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-grid/zipball/30ee1f8b519454ec5e9f0cea0cd556a0ee2e637e",
-                "reference": "30ee1f8b519454ec5e9f0cea0cd556a0ee2e637e",
+                "url": "https://api.github.com/repos/kartik-v/yii2-grid/zipball/951eada4f20593ace18295336c75fd16b353ded0",
+                "reference": "951eada4f20593ace18295336c75fd16b353ded0",
                 "shasum": ""
             },
             "require": {
@@ -1036,7 +1036,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2018-09-10T07:38:15+00:00"
+            "time": "2018-09-12T11:02:54+00:00"
         },
         {
             "name": "kartik-v/yii2-krajee-base",
@@ -2017,12 +2017,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "4b6a304d23582201b720837fc2ece5b6845e89e9"
+                "reference": "193ea5955cdf0f7bea41aac0ee7c5b52684f6bbe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/4b6a304d23582201b720837fc2ece5b6845e89e9",
-                "reference": "4b6a304d23582201b720837fc2ece5b6845e89e9",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/193ea5955cdf0f7bea41aac0ee7c5b52684f6bbe",
+                "reference": "193ea5955cdf0f7bea41aac0ee7c5b52684f6bbe",
                 "shasum": ""
             },
             "require": {
@@ -2109,7 +2109,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2018-09-09T20:45:32+00:00"
+            "time": "2018-09-13T09:18:18+00:00"
         },
         {
             "name": "yiisoft/yii2-bootstrap",
@@ -2566,12 +2566,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/phpunit-wrapper.git",
-                "reference": "959266c59861bbceb7832ad7c200cd6375893a3c"
+                "reference": "de922c760dfddf8a33c4a066efcd0cd93576d957"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/phpunit-wrapper/zipball/959266c59861bbceb7832ad7c200cd6375893a3c",
-                "reference": "959266c59861bbceb7832ad7c200cd6375893a3c",
+                "url": "https://api.github.com/repos/Codeception/phpunit-wrapper/zipball/de922c760dfddf8a33c4a066efcd0cd93576d957",
+                "reference": "de922c760dfddf8a33c4a066efcd0cd93576d957",
                 "shasum": ""
             },
             "require": {
@@ -2604,7 +2604,7 @@
                 }
             ],
             "description": "PHPUnit classes used by Codeception",
-            "time": "2018-07-31T20:27:01+00:00"
+            "time": "2018-09-12T20:19:47+00:00"
         },
         {
             "name": "codeception/stub",
@@ -4145,12 +4145,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "8a1270a8544633cb159155555582a58b654e1334"
+                "reference": "2fdbba7fe6d979f53512e2eb852837c991fbe3d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/8a1270a8544633cb159155555582a58b654e1334",
-                "reference": "8a1270a8544633cb159155555582a58b654e1334",
+                "url": "https://api.github.com/repos/symfony/console/zipball/2fdbba7fe6d979f53512e2eb852837c991fbe3d8",
+                "reference": "2fdbba7fe6d979f53512e2eb852837c991fbe3d8",
                 "shasum": ""
             },
             "require": {
@@ -4206,7 +4206,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2018-09-11T17:16:23+00:00"
+            "time": "2018-09-16T11:50:16+00:00"
         },
         {
             "name": "symfony/css-selector",

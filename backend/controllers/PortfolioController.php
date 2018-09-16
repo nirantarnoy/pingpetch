@@ -83,7 +83,8 @@ class PortfolioController extends Controller
                         foreach($uploadeds as $files){
                             $i+=1;
                             $folder = 'screenshots';
-                            $file = time().".".$files->getExtension();
+                            //$file = $files->name.".".$files->getExtension();
+                            $file = $files->name;
 
                             if($files->saveAs($path.'/'.$folder.'/'.$file)){
                                $model_gallery = new \backend\models\Portgallery();
