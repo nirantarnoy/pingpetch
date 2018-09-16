@@ -170,6 +170,12 @@ class PortfolioController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
+        $model = \backend\models\Portgallery::find()->where(['port_id'=>$id])->all();
+        $path = Yii::getAlias('@frontend') .'/web/img/screenshots';
+        foreach ($model as $value){
+            unlink($path."/".$value->name);
+        }
+        \backend\models\Portgallery::deleteAll(['port_id'=>$id]);
 
         return $this->redirect(['index']);
     }
