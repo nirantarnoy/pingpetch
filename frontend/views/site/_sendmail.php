@@ -5,7 +5,7 @@
  * Date: 16/09/2018
  * Time: 09:21
  */
-require_once Yii::$app->basePath.('\phpmailer\class.phpmailer.php');
+require_once Yii::$app->basePath.('/phpmailer/class.phpmailer.php');
 
 $mail = new PHPMailer();
 $mail->CharSet = "utf-8";
