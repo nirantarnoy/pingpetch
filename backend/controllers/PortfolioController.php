@@ -173,7 +173,10 @@ class PortfolioController extends Controller
         $model = \backend\models\Portgallery::find()->where(['port_id'=>$id])->all();
         $path = Yii::getAlias('@frontend') .'/web/img/screenshots';
         foreach ($model as $value){
-            unlink($path."/".$value->name);
+            if(isset($path."/".$value->name)){
+                unlink($path."/".$value->name);
+            }
+
         }
         \backend\models\Portgallery::deleteAll(['port_id'=>$id]);
 
