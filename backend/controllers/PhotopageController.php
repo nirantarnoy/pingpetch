@@ -70,7 +70,7 @@ class PhotopageController extends Controller
     {
         $model = new Photopage();
         $path = Yii::getAlias('@frontend') .'/themes/alstar/dist/img';
-
+        $path2 = Yii::getAlias('@frontend') .'/web/img';
         //echo $path;return;
         if ($model->load(Yii::$app->request->post())) {
             $uploaded = UploadedFile::getInstance($model,'photo');
@@ -90,6 +90,7 @@ class PhotopageController extends Controller
                 }else if($model->photo_position ==2){
                     $folder = 'about';
                     $file = "about-1".".".$uploaded->getExtension();
+                    $uploaded->saveAs($path2.'/'.$folder.'/'.$file);
                 }else if($model->photo_position ==3){
                     $folder = 'parallax';
                     $file = "slogan-1".".".$uploaded->getExtension();
