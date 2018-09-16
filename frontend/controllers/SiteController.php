@@ -77,6 +77,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+       // $this->notifymessage("niran testing");
         $modelinfo = \common\models\Shop::find()->one();
         $modelcontact = new \common\models\Contact();
         $modelslidetext = \backend\models\Photopage::find()->where(['photo_position'=>1])->all();
@@ -268,16 +269,49 @@ class SiteController extends Controller
 //                       ->setSubject($model->title)
 //                   ->send();
 
-               return $this->render('_sendmail',[
-                   'email'=>$model->email,
-                   'message'=>$model->message,
-                   'title'=>$model->title,
-               ]);
+     //          return $this->render('_sendmail',[
+//                   'email'=>$model->email,
+//                   'message'=>$model->message,
+//                   'title'=>$model->title,
+  //             ]);
+               $message = $model->title;
+
+               $message = $message. " ".$model->message;
+
+               $message = $message." ".$model->email;
+               $message = $message." ".$model->social;
+
+               $this->notifymessage($message);
+               return $this->redirect(['index']);
            }
         }
     }
     public function actionMailer(){
 
         //return $this->renderPartial('_sendmail');
+    }
+    public function notifymessage($message)
+    {
+        //$message = "This is test send request from camel paperless";
+        $line_api = 'https://notify-api.line.me/api/notify';
+        // $line_token = 'I1cho6FL9cC0WBLMgLD3XNHgK0W5AjceuITPeFSccL1';
+        $line_token = 'bf4dGSjA6bEADUgthv9dRRx6I00l3iPKXtp0XFzqBud'; //pingpetch
+
+        // $queryData = array('message' => $message);
+        $queryData = array('message' => $message);
+        $queryData = http_build_query($queryData, '', '&');
+        $headerOptions = array(
+            'http' => array(
+                'method' => 'POST',
+                'header' => "Content-Type: application/x-www-form-urlencoded\r\n"
+                    . "Authorization: Bearer " . $line_token . "\r\n"
+                    . "Content-Length: " . strlen($queryData) . "\r\n",
+                'content' => $queryData
+            )
+        );
+        $context = stream_context_create($headerOptions);
+        $result = file_get_contents($line_api, FALSE, $context);
+        $res = json_decode($result);
+        return $res;
     }
 }
