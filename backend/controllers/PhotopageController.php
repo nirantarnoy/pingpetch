@@ -102,7 +102,10 @@ class PhotopageController extends Controller
                 if($model->photo_position == 2){
                     if(null!=($path2.'/'.$folder.'/'.$file))
                     {
-                        unlink($path2.'/'.$folder.'/'.$file);
+                        if(null!=($path2.'/'.$folder.'/'.$file)){
+                            unlink($path2.'/'.$folder.'/'.$file);
+                        }
+
                     }
 
                     if($uploaded->saveAs($path2.'/'.$folder.'/'.$file)){
