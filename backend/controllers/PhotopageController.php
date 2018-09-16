@@ -103,7 +103,7 @@ class PhotopageController extends Controller
                     if(null!=($path2.'/'.$folder.'/'.$file))
                     {
                        // if(null!=($path2.'/'.$folder.'/'.$file)){
-                            unlink($path2.'/'.$folder.'/'.$file);
+                          //  unlink($path2.'/'.$folder.'/'.$file);
                         //}
 
                     }
