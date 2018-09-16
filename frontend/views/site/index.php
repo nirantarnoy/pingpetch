@@ -270,7 +270,9 @@ $this->registerJs($js,static::POS_END);
         <div class="row wow fadeInUp">
             <div class="col-md-6 about-img">
                 <img src="../../frontend/themes/alstar/dist/img/about/<?php //echo $about_photo->photo?>" alt="">
+                <?php if(null != $about_photo->photo):?>
                 <img src="<?=Yii::$app->getUrlManager()->baseUrl?>/img/about/<?=$about_photo->photo?>" style="width:100%">
+                <?php endif;?>
             </div>
 
             <div class="col-md-6 content" style="font-family: 'Cloud-Light';font-size: 24px;text-align: left;">
