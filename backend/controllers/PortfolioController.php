@@ -173,7 +173,7 @@ class PortfolioController extends Controller
         $model = \backend\models\Portgallery::find()->where(['port_id'=>$id])->all();
         $path = Yii::getAlias('@frontend') .'/web/img/screenshots';
         foreach ($model as $value){
-            if(isset($path."/".$value->name)){
+            if(null!=($path."/".$value->name)){
                 unlink($path."/".$value->name);
             }
 
