@@ -12,6 +12,10 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+//use frontend\phpmailer\phpmailer;
+use yii\web\UrlManager;
+
+
 
 /**
  * Site controller
@@ -252,20 +256,28 @@ class SiteController extends Controller
         if($model->load(Yii::$app->request->post())){
             $model->created_at = time();
            if($model->save()){
-                   Yii::$app->mailer->compose('@frontend/mail/layouts/contact',[
-                       'fullname'=>'pingpetch',
-                       'title'=>$model->title,
-                       'message'=>$model->message,
-                       'cus_email'=>$model->email,
-                       'cus_social'=>$model->social,
-                   ])
-                   ->setFrom(['panumas894@gmail.com'=>'Pingpetch Web'])
-                       ->setTo('pingpetch168@gmail.com')
-                       ->setSubject($model->title)
-                   ->send();
+//                   Yii::$app->mailer->compose('@frontend/mail/layouts/contact',[
+//                       'fullname'=>'pingpetch',
+//                       'title'=>$model->title,
+//                       'message'=>$model->message,
+//                       'cus_email'=>$model->email,
+//                       'cus_social'=>$model->social,
+//                   ])
+//                   ->setFrom(['panumas894@gmail.com'=>'Pingpetch Web'])
+//                       ->setTo('pingpetch168@gmail.com')
+//                       ->setSubject($model->title)
+//                   ->send();
 
-               return $this->redirect(['index']);
+               return $this->render('_sendmail',[
+                   'email'=>$model->email,
+                   'message'=>$model->message,
+                   'title'=>$model->title,
+               ]);
            }
         }
+    }
+    public function actionMailer(){
+
+        //return $this->renderPartial('_sendmail');
     }
 }
