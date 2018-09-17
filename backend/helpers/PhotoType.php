@@ -10,12 +10,16 @@ class PhotoType
         1 => 'Slide Top',
         2 => 'About us',
         3 => 'Slogan',
+        4 => 'Clients',
+        5 => 'Client Background'
     ];
 
     private static $dataobj = [
         ['id'=>1,'name' => 'Slide Top'],
         ['id'=>2,'name' => 'About us'],
         ['id'=>3,'name' => 'Slogan'],
+        ['id'=>4,'name' => 'Clients'],
+        ['id'=>5,'name' => 'Client Background'],
     ];
     public static function asArray()
     {

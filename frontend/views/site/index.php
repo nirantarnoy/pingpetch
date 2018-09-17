@@ -13,6 +13,7 @@ $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@alstar/dist');
 $service = \common\models\Services::find()->all();
 $portfolio = \common\models\Portfolio::find()->where(['!=','photo',''])->all();
 $portgallery = \backend\models\Portgallery::find()->all();
+$photo_client = \backend\models\Photopage::find()->where(['photo_position'=>4])->all();
 $path = Yii::getAlias('@frontend') .'/themes/alstar/dist/img';
 $this->registerCss('
      body{
@@ -485,10 +486,9 @@ $this->registerJs($js,static::POS_END);
         <div class="row">
             <div class="col-md-12">
                 <ul class="clients">
-                    <li class="wow fadeInDown" data-wow-delay="0.3s"><a href="#"><img src="<?=$directoryAsset?>/img/clients/1.png" alt="" /></a></li>
-                    <li class="wow fadeInDown" data-wow-delay="0.6s"><a href="#"><img src="<?=$directoryAsset?>/img/clients/2.png" alt="" /></a></li>
-                    <li class="wow fadeInDown" data-wow-delay="0.9s"><a href="#"><img src="<?=$directoryAsset?>/img/clients/3.png" alt="" /></a></li>
-                    <li class="wow fadeInDown" data-wow-delay="1.1s"><a href="#"><img src="<?=$directoryAsset?>/img/clients/4.png" alt="" /></a></li>
+                    <?php foreach($photo_client as $value):?>
+                    <li class="wow fadeInDown" data-wow-delay="0.3s"><a href="#"><img src="<?=$directoryAsset?>/img/clients/<?=$value->photo?>" alt="" /></a></li>
+                    <?php endforeach;?>
                 </ul>
             </div>
         </div>

@@ -94,6 +94,13 @@ class PhotopageController extends Controller
                 }else if($model->photo_position ==3){
                     $folder = 'parallax';
                     $file = "slogan-1".".".$uploaded->getExtension();
+                }else if($model->photo_position ==4){
+                    $folder = 'clients';
+                    $file = $uploaded->name;
+                }
+                else if($model->photo_position ==5){
+                    $folder = 'parallax';
+                    $file = "client".".".$uploaded->getExtension();
                 }
 
 
